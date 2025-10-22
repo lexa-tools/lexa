@@ -3,6 +3,9 @@
 
 // Colours
 $body-bg: #fafafa;
+$bg-gray-1: #f4f4f4;
+$bg-gray-2: #aaaaaa;
+$bg-gray-3: #5a5a5a;
 
 // Enable Bootstrap CSS Grid, disable default flexbox grid
 $enable-grid-classes: false;
@@ -11,6 +14,47 @@ $enable-cssgrid: true;
 // Import required Bootstrap components
 @import "../../../node_modules/bootstrap/scss/variables";
 @import "../../../node_modules/bootstrap/scss/variables-dark";
+
 @import "../../../node_modules/bootstrap/scss/maps";
 @import "../../../node_modules/bootstrap/scss/mixins";
 @import "../../../node_modules/bootstrap/scss/root";
+
+@import "../../../node_modules/bootstrap/scss/utilities";
+@import "../../../node_modules/bootstrap/scss/reboot";
+@import "../../../node_modules/bootstrap/scss/type";
+@import "../../../node_modules/bootstrap/scss/images";
+@import "../../../node_modules/bootstrap/scss/containers";
+@import "../../../node_modules/bootstrap/scss/grid";
+@import "../../../node_modules/bootstrap/scss/helpers";
+
+@import "../../../node_modules/bootstrap/scss/utilities/api";
+
+body {
+  font-family:
+    -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial,
+    sans-serif;
+  margin: auto;
+}
+
+.sidebar {
+  position: fixed;
+  width: 60px;
+  top: 0;
+  height: calc(100vh - 26px);
+  z-index: 100;
+  background-color: $bg-gray-1;
+}
+
+.main {
+    margin-left: 60px;
+}
+
+.statusbar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 26px;
+  z-index: 100;
+  background-color: $bg-gray-2;
+}
