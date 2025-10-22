@@ -6327,6 +6327,15 @@ body {
   height: calc(100vh - 26px);
   z-index: 100;
   background-color: #f4f4f4;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* center icons horizontally */
+  padding: 10px 0;
+  gap: 20px;
+}
+
+.sidebar .nav-item:last-child {
+  margin-top: auto;
 }
 
 .main {
@@ -6341,6 +6350,15 @@ body {
   height: 26px;
   z-index: 100;
   background-color: #aaaaaa;
+}
+
+i.fas {
+  color: #aaaaaa;
+  font-size: 24px;
+}
+
+i.fas.tab {
+  color: #5a5a5a;
 }
 
 /*# sourceMappingURL=bootstrap.css.map */

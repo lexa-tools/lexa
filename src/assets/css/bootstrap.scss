@@ -43,6 +43,15 @@ body {
   height: calc(100vh - 26px);
   z-index: 100;
   background-color: $bg-gray-1;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* center icons horizontally */
+  padding: 10px 0;
+  gap: 20px;
+}
+
+.sidebar .nav-item:last-child {
+  margin-top: auto;
 }
 
 .main {
@@ -57,4 +66,13 @@ body {
   height: 26px;
   z-index: 100;
   background-color: $bg-gray-2;
+}
+
+i.fas {
+  color: $bg-gray-2;
+  font-size: 24px;
+}
+
+i.fas.tab {
+  color: $bg-gray-3
 }
