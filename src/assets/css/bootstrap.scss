@@ -1,6 +1,16 @@
+
+@import "../../../node_modules/bootstrap/scss/functions";
+
+// Colours
+$body-bg: #fafafa;
+
 // Enable Bootstrap CSS Grid, disable default flexbox grid
 $enable-grid-classes: false;
 $enable-cssgrid: true;
 
-// Import full Bootstrap
-@import "../../node_modules/bootstrap/scss/bootstrap";
+// Import required Bootstrap components
+@import "../../../node_modules/bootstrap/scss/variables";
+@import "../../../node_modules/bootstrap/scss/variables-dark";
+@import "../../../node_modules/bootstrap/scss/maps";
+@import "../../../node_modules/bootstrap/scss/mixins";
+@import "../../../node_modules/bootstrap/scss/root";
