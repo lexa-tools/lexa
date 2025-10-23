@@ -6317,19 +6317,22 @@ progress {
 }
 body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  margin: auto;
+  margin: 0;
+  height: calc(100vh - 25px);
+  box-sizing: border-box;
 }
 
 .sidebar {
   position: fixed;
   width: 60px;
+  left: 0;
   top: 0;
   height: calc(100vh - 26px);
   z-index: 100;
   background-color: #f4f4f4;
   display: flex;
   flex-direction: column;
-  align-items: center; /* center icons horizontally */
+  align-items: center;
   padding: 10px 0;
   gap: 20px;
 }
@@ -6338,8 +6341,24 @@ body {
   margin-top: auto;
 }
 
-.main {
+.main-wrapper {
   margin-left: 60px;
+  height: calc(100vh - 25px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.main {
+  background: #f4f4f4;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  width: 95%;
+  height: min(95%, 100vh - 25px);
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
 }
 
 .statusbar {
