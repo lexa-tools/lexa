@@ -6315,8 +6315,36 @@ progress {
     display: none !important;
   }
 }
+/* Regular */
+@font-face {
+  font-family: "Noto Sans";
+  src: url("../fonts/NotoSans-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+/* Italic */
+@font-face {
+  font-family: "Noto Sans";
+  src: url("../fonts/NotoSans-Italic.ttf") format("truetype");
+  font-weight: 400;
+  font-style: italic;
+}
+/* Bold */
+@font-face {
+  font-family: "Noto Sans";
+  src: url("../fonts/NotoSans-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+}
+/* Bold Italic */
+@font-face {
+  font-family: "Noto Sans";
+  src: url("../fonts/NotoSans-BoldItalic.ttf") format("truetype");
+  font-weight: 700;
+  font-style: italic;
+}
 body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-family: "Noto Sans";
   margin: 0;
   height: calc(100vh - 25px);
   box-sizing: border-box;
