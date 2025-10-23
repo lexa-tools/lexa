@@ -6361,7 +6361,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 10px 0;
+  padding: 20px 0;
   gap: 20px;
 }
 
