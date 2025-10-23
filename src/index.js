@@ -1,5 +1,6 @@
 const { app, BrowserWindow, Menu, dialog } = require('electron');
 const path = require('node:path');
+const fs = require('fs')
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
 if (require('electron-squirrel-startup')) {
@@ -89,7 +90,34 @@ async function openProject() {
   });
 
   if (!result.canceled && result.filePaths.length > 0) {
-    // send to renderer
-    mainWindow.webContents.send('project-opened', result.filePaths[0]);
+    const projectPath = result.filePaths[0];
+
+    const validation = validateProject(projectPath);
+
+    mainWindow.webContents.send('project-opened', projectPath);
+    mainWindow.webContents.send('project-validation', validation);
+  }
+}
+
+const expectedStructure = [
+  'lexicon',
+  'collections',
+  'config.yaml',
+  'grammar.yaml'
+];
+
+function validateProject(projectPath) {
+  try {
+    const entries = fs.readdirSync(projectPath);
+    const missing = expectedStructure.filter(item => !entries.includes(item));
+
+    if (missing.length > 0) {
+      console.log(missing)
+      return { valid: false, missing };
+    } else {
+      return { valid: true };
+    }
+  } catch (err) {
+    return { valid: false, error: err.message };
   }
 }

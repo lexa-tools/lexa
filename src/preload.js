@@ -4,5 +4,6 @@
 const { contextBridge, ipcRenderer } = require('electron');
 
 contextBridge.exposeInMainWorld('electronAPI', {
-  onProjectOpened: (callback) => ipcRenderer.on('project-opened', (event, projectPath) => callback(projectPath))
+  onProjectOpened: (callback) => ipcRenderer.on('project-opened', (event, projectPath) => callback(projectPath)),
+  onProjectValidation: (callback) => ipcRenderer.on('project-validation', (event, validation) => callback(validation))
 });
