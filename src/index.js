@@ -1,5 +1,6 @@
 const { app, BrowserWindow, Menu, dialog } = require('electron');
 const path = require('node:path');
+const fs = require('fs');
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
 if (require('electron-squirrel-startup')) {
@@ -62,6 +63,8 @@ app.whenReady().then(() => {
 
   createWindow();
 
+  const dbPath = ensureExampleDB();
+
   // On OS X it's common to re-create a window in the app when the
   // dock icon is clicked and there are no other windows open.
   app.on('activate', () => {
@@ -92,4 +95,21 @@ async function openProject() {
     // send to renderer
     mainWindow.webContents.send('project-opened', result.filePaths[0]);
   }
+}
+
+function ensureExampleDB() {
+  const userDataPath = app.getPath('userData');
+  const userDbPath = path.join(userDataPath, 'example_lexadb');
+
+  // dev or packaged base
+  const exampleDbPath = app.isPackaged
+    ? path.join(process.resourcesPath, 'example_lexadb')
+    : path.join(__dirname, '../example_lexadb');
+
+  if (!fs.existsSync(userDbPath)) {
+    fs.cpSync(exampleDbPath, userDbPath, { recursive: true });
+    console.log('Copied example database to userData.');
+  }
+
+  return userDbPath;
 }
