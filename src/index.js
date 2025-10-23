@@ -1,6 +1,7 @@
 const { app, BrowserWindow, Menu, dialog } = require('electron');
 const path = require('node:path');
-const fs = require('fs')
+const fs = require('fs');
+const yaml = require('yaml');
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
 if (require('electron-squirrel-startup')) {
@@ -111,13 +112,21 @@ function validateLexadb(lexadbPath) {
     const entries = fs.readdirSync(lexadbPath);
     const missing = expectedStructure.filter(item => !entries.includes(item));
 
-    if (missing.length > 0) {
+    const config = readConfig(lexadbPath);
+
+    if (missing.length === 0 && config.schema === 'lexadb') {
+      return { valid: true };
+    } else {
       console.log(missing)
       return { valid: false, missing };
-    } else {
-      return { valid: true };
     }
   } catch (err) {
     return { valid: false, error: err.message };
   }
+}
+
+function readConfig(lexadbPath) {
+  const config = yaml.parse(fs.readFileSync(path.join(lexadbPath, 'config.yaml'), 'utf8'));
+
+  return config;
 }

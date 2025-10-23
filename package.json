@@ -20,7 +20,8 @@
   "dependencies": {
     "@fortawesome/fontawesome-free": "^7.1.0",
     "bootstrap": "^5.3.8",
-    "electron-squirrel-startup": "^1.0.1"
+    "electron-squirrel-startup": "^1.0.1",
+    "yaml": "^2.8.1"
   },
   "devDependencies": {
     "@electron-forge/cli": "^7.10.2",
