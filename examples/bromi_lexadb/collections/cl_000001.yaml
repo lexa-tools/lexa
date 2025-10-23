@@ -1,0 +1,36 @@
+id: cl_000001
+title: "Split ergativity in Bromi"
+sentences:
+  st_000001:
+    id: st_000001
+    sentence:
+      hira:
+        text: "ふぁろっしゃ「ぎそんの「うっつろい"
+        transcription: "Farossha gisonno uttroi."
+      romaji: Farossha gisonno uttroi.
+    morphemes: "fa-rossha gi-sonno uttr-oi"
+    gloss: "ACC-lunch NOM-1PL eat-1PL"
+    phonetic: "faɽɔʃʃa gisɔnno uttɽoi"
+    translation: "We are having lunch."
+  st_000002:
+    id: st_000002
+    sentence:
+      hira:
+        text: "がっと 「しさんの「うっつろい"
+        transcription: "Gatto sisonno uttroi."
+      romaji: "Gatto sisonno uttroi."
+    morphemes: "gatto si-sonno uttr-oi"
+    gloss: "dinner ERG-1PL eat-1PL"
+    phonetic: "gatto sisɔnno uttɽoi"
+    translation: "We are having dinner."
+  st_000003:
+    id: st_000003
+    sentence:
+      hira:
+        text: "ろっしゃ 「しさんの「うったのい"
+        transcription: "Rossha sisonno uttanoi."
+      romaji: "Rossha sisonno uttanoi."
+    morphemes: "rossha si-sonno uttr-oi"
+    gloss: "lunch ERG-1PL eat\PST-1PL"
+    phonetic: "rossha sisɔnno uttɽoi"
+    translation: "We had lunch."

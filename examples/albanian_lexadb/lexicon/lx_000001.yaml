@@ -1,0 +1,21 @@
+id: lx_000001
+lexeme: erë
+phonemic: eɽɜ
+morph_category: lexical
+morph_type: root
+part_of_speech: noun
+allomorphs:
+  al_01:
+    id: al_01
+    morph: erë
+    phon: eɽɜ
+senses:
+  se_01:
+    id: se_01
+    gloss: wind
+    definition:
+      eng: "wind"
+    examples:
+    - cl_000001:st_000001
+date_created: 2022-07-24T14:31:47Z
+date_modified: 2022-07-24T14:31:47Z
