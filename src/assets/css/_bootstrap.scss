@@ -6,6 +6,8 @@
 $enable-grid-classes: false;
 $enable-cssgrid: true;
 
+@import 'variables';
+
 // Import required Bootstrap components
 @import "../../../node_modules/bootstrap/scss/variables";
 @import "../../../node_modules/bootstrap/scss/variables-dark";

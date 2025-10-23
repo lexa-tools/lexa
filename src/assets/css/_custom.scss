@@ -3,7 +3,7 @@
 @use 'variables';
 
 body {
-  font-family: "Noto Sans";
+  font-family: variables.$font-sans-serif;
   margin: 0;
   height: calc(100vh - 25px);
   box-sizing: border-box;
