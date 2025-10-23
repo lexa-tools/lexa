@@ -1,10 +1,10 @@
 
-window.electronAPI.onProjectOpened((projectPath) => {
-  const pathElement = document.getElementById('project-path');
-  pathElement.textContent = `Opened project: ${projectPath}`;
+window.electronAPI.onLexadbOpened((lexadbPath) => {
+  const pathElement = document.getElementById('lexadb-path');
+  pathElement.textContent = `Opened Lexa DB: ${lexadbPath}`;
 });
 
-window.electronAPI.onProjectValidation((validation) => {
-  const pathElement = document.getElementById('project-validation');
+window.electronAPI.onLexadbValidation((validation) => {
+  const pathElement = document.getElementById('lexadb-validation');
   pathElement.textContent = `Valid: ${validation.valid}`;
 });

@@ -43,7 +43,7 @@ app.whenReady().then(() => {
         {
           label: 'Open Project…',
           accelerator: 'CmdOrCtrl+O',
-          click: openProject,
+          click: openLexadb,
         },
         { type: 'separator' },
         { role: 'close' },
@@ -84,18 +84,18 @@ app.on('window-all-closed', () => {
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and import them here.
 
-async function openProject() {
+async function openLexadb() {
   const result = await dialog.showOpenDialog({
     properties: ['openDirectory']
   });
 
   if (!result.canceled && result.filePaths.length > 0) {
-    const projectPath = result.filePaths[0];
+    const lexadbPath = result.filePaths[0];
 
-    const validation = validateProject(projectPath);
+    const validation = validateLexadb(lexadbPath);
 
-    mainWindow.webContents.send('project-opened', projectPath);
-    mainWindow.webContents.send('project-validation', validation);
+    mainWindow.webContents.send('lexadb-opened', lexadbPath);
+    mainWindow.webContents.send('lexadb-validation', validation);
   }
 }
 
@@ -106,9 +106,9 @@ const expectedStructure = [
   'grammar.yaml'
 ];
 
-function validateProject(projectPath) {
+function validateLexadb(lexadbPath) {
   try {
-    const entries = fs.readdirSync(projectPath);
+    const entries = fs.readdirSync(lexadbPath);
     const missing = expectedStructure.filter(item => !entries.includes(item));
 
     if (missing.length > 0) {
