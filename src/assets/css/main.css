@@ -6344,80 +6344,80 @@ progress {
   font-style: italic;
 }
 body {
-  font-family: "Noto Sans";
-  margin: 0;
-  height: calc(100vh - 25px);
   box-sizing: border-box;
+  font-family: "Noto Sans";
+  height: calc(100vh - 25px);
+  margin: 0;
 }
 
 /* Sidebar */
 .sidebar {
-  position: fixed;
-  width: 60px;
-  left: 0;
-  top: 0;
-  height: calc(100vh - 26px);
-  z-index: 100;
+  align-items: center;
   background-color: #f4f4f4;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  padding: 20px 0;
-  gap: 20px;
   font-size: 24px;
+  gap: 20px;
+  height: calc(100vh - 26px);
+  left: 0;
+  padding: 20px 0;
+  position: fixed;
+  top: 0;
+  width: 60px;
+  z-index: 100;
 }
 .sidebar__nav-item:last-child {
   margin-top: auto;
 }
-.sidebar__icon--active {
-  color: #5a5a5a;
-}
 .sidebar__icon {
   color: #aaaaaa;
+}
+.sidebar__icon--active {
+  color: #5a5a5a;
 }
 
 /* Main wrapper */
 .main-wrapper {
-  margin-left: 60px;
-  height: calc(100vh - 25px);
-  display: flex;
-  justify-content: center;
   align-items: center;
+  display: flex;
+  height: calc(100vh - 25px);
+  justify-content: center;
+  margin-left: 60px;
 }
 
 .main {
   background: #f4f4f4;
   border-radius: 16px;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
-  width: 95%;
-  height: min(95%, 100vh - 25px);
-  padding: 2rem;
   display: flex;
   flex-direction: column;
+  height: min(95%, 100vh - 25px);
   overflow: auto;
+  padding: 2rem;
+  width: 95%;
 }
 
 /* Corner */
 .corner {
-  position: fixed;
-  bottom: 0;
-  width: 60px;
-  height: 26px;
-  z-index: 100;
   background-color: #5a5a5a;
+  bottom: 0;
+  height: 26px;
+  position: fixed;
+  width: 60px;
+  z-index: 100;
 }
 
 /* Statusbar */
 .statusbar {
-  position: fixed;
-  bottom: 0;
-  left: 60px;
-  width: calc(100vw - 60px);
-  height: 26px;
-  padding-left: 10px;
-  line-height: 26px;
-  z-index: 100;
   background-color: #aaaaaa;
+  bottom: 0;
+  height: 26px;
+  left: 60px;
+  line-height: 26px;
+  padding-left: 10px;
+  position: fixed;
+  width: calc(100vw - 60px);
+  z-index: 100;
 }
 .statusbar__icon--valid {
   color: green;

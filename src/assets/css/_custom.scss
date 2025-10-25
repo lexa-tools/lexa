@@ -3,27 +3,27 @@
 @use 'variables';
 
 body {
-  font-family: variables.$font-sans-serif;
-  margin: 0;
-  height: calc(100vh - 25px);
   box-sizing: border-box;
+  font-family: variables.$font-sans-serif;
+  height: calc(100vh - 25px);
+  margin: 0;
 }
 
 /* Sidebar */
 .sidebar {
-  position: fixed;
-  width: 60px;
-  left: 0;
-  top: 0;
-  height: calc(100vh - 26px);
-  z-index: 100;
+  align-items: center;
   background-color: variables.$bg-gray-1;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  padding: 20px 0;
-  gap: 20px;
   font-size: 24px;
+  gap: 20px;
+  height: calc(100vh - 26px);
+  left: 0;
+  padding: 20px 0;
+  position: fixed;
+  top: 0;
+  width: 60px;
+  z-index: 100;
 
   &__nav-item {
     &:last-child {
@@ -32,60 +32,62 @@ body {
   }
 
   &__icon {
+    color: variables.$bg-gray-2;
+
     &--active {
       color: variables.$bg-gray-3;
     }
-    color: variables.$bg-gray-2;
   }
 }
 
 /* Main wrapper */
 .main-wrapper {
-  margin-left: 60px;
-  height: calc(100vh - 25px);
-  display: flex;
-  justify-content: center;
   align-items: center;
+  display: flex;
+  height: calc(100vh - 25px);
+  justify-content: center;
+  margin-left: 60px;
 }
 
 .main {
   background: variables.$bg-gray-1;
   border-radius: 16px;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
-  width: min(95%);
-  height: min(95%, calc(100vh - 25px));
-  padding: 2rem;
   display: flex;
   flex-direction: column;
+  height: min(95%, calc(100vh - 25px));
   overflow: auto;
+  padding: 2rem;
+  width: min(95%);
 }
 
 /* Corner */
 .corner {
-  position: fixed;
-  bottom: 0;
-  width: 60px;
-  height: 26px;
-  z-index: 100;
   background-color: variables.$bg-gray-3;
+  bottom: 0;
+  height: 26px;
+  position: fixed;
+  width: 60px;
+  z-index: 100;
 }
 
 /* Statusbar */
 .statusbar {
-  position: fixed;
-  bottom: 0;
-  left: 60px;
-  width: calc(100vw - 60px);
-  height: 26px;
-  padding-left: 10px;
-  line-height: 26px;
-  z-index: 100;
   background-color: variables.$bg-gray-2;
+  bottom: 0;
+  height: 26px;
+  left: 60px;
+  line-height: 26px;
+  padding-left: 10px;
+  position: fixed;
+  width: calc(100vw - 60px);
+  z-index: 100;
 
   &__icon {
     &--valid {
       color: green;
     }
+
     &--invalid {
       color: red;
     }

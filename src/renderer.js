@@ -3,7 +3,6 @@
 window.electronAPI.onLexadbOpened((lexadbPath) => {
   const pathElement = document.getElementById('lexadb-path');
   pathElement.textContent = `${lexadbPath}`;
-  pathElement.classList.add('statusbar__dbpath');
 });
 
 // Send lexadb validation
