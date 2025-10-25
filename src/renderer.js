@@ -3,6 +3,7 @@
 window.electronAPI.onLexadbOpened((lexadbPath) => {
   const pathElement = document.getElementById('lexadb-path');
   pathElement.textContent = `${lexadbPath}`;
+  pathElement.classList.add('statusbar__dbpath');
 });
 
 // Send lexadb validation
@@ -14,8 +15,8 @@ window.electronAPI.onLexadbValidation((validation) => {
 
   // Apply a new class based on validation
   if (validation.valid) {
-    icon.classList.add('valid');
+    icon.classList.add('statusbar__icon--valid');
   } else {
-    icon.classList.add('invalid');
+    icon.classList.add('statusbar__icon--invalid');
   }
 });

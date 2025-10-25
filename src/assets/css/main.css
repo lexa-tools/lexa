@@ -6350,6 +6350,7 @@ body {
   box-sizing: border-box;
 }
 
+/* Sidebar */
 .sidebar {
   position: fixed;
   width: 60px;
@@ -6363,12 +6364,19 @@ body {
   align-items: center;
   padding: 20px 0;
   gap: 20px;
+  font-size: 24px;
 }
-
-.sidebar .nav-item:last-child {
+.sidebar__nav-item:last-child {
   margin-top: auto;
 }
+.sidebar__icon--active {
+  color: #5a5a5a;
+}
+.sidebar__icon {
+  color: #aaaaaa;
+}
 
+/* Main wrapper */
 .main-wrapper {
   margin-left: 60px;
   height: calc(100vh - 25px);
@@ -6389,6 +6397,7 @@ body {
   overflow: auto;
 }
 
+/* Corner */
 .corner {
   position: fixed;
   bottom: 0;
@@ -6398,6 +6407,7 @@ body {
   background-color: #5a5a5a;
 }
 
+/* Statusbar */
 .statusbar {
   position: fixed;
   bottom: 0;
@@ -6409,26 +6419,14 @@ body {
   z-index: 100;
   background-color: #aaaaaa;
 }
-
-.sidebar i.fas {
-  color: #aaaaaa;
-  font-size: 24px;
-}
-
-.sidebar i.fas.tab {
-  color: #5a5a5a;
-}
-
-.statusbar i.valid {
+.statusbar__icon--valid {
   color: green;
 }
-
-.statusbar i.invalid {
+.statusbar__icon--invalid {
   color: red;
 }
-
-#lexadb-path {
-  font-size: 0.7rem;
+.statusbar__dbpath {
+  font-size: 0.8rem;
 }
 
 /*# sourceMappingURL=main.css.map */
