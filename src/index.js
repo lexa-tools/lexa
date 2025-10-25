@@ -95,6 +95,10 @@ async function openLexadb() {
 
     const validation = validateLexadb(lexadbPath);
 
+    const config = readConfig(lexadbPath);
+    const lexadbName = config.name;
+
+    mainWindow.webContents.send('lexadb-name', lexadbName);
     mainWindow.webContents.send('lexadb-opened', lexadbPath);
     mainWindow.webContents.send('lexadb-validation', validation);
   }

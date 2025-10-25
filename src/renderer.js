@@ -1,4 +1,10 @@
 
+// Send lexadb name
+window.electronAPI.onLexadbName((lexadbName) => {
+  const pathElement = document.getElementById('lexadb-name');
+  pathElement.textContent = `${lexadbName}`;
+});
+
 // Send lexadb path
 window.electronAPI.onLexadbOpened((lexadbPath) => {
   const pathElement = document.getElementById('lexadb-path');
