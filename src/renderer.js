@@ -7,6 +7,15 @@ window.electronAPI.onLexadbOpened((lexadbPath) => {
 
 // Send lexadb validation
 window.electronAPI.onLexadbValidation((validation) => {
-  const pathElement = document.getElementById('lexadb-validation');
-  pathElement.textContent = `Valid: ${validation.valid}`;
+  const icon = document.getElementById('lexadb-validation');
+
+  // Clear any previous validation classes
+  icon.classList.remove('valid', 'invalid');
+
+  // Apply a new class based on validation
+  if (validation.valid) {
+    icon.classList.add('valid');
+  } else {
+    icon.classList.add('invalid');
+  }
 });
