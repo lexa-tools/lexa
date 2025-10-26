@@ -1,6 +1,6 @@
 // fonts.scss
 
-/* Regular */
+/* Noto Sans */
 @font-face {
   font-family: "Noto Sans";
   src: url("../fonts/NotoSans-Regular.ttf") format("truetype");
@@ -8,7 +8,6 @@
   font-style: normal;
 }
 
-/* Italic */
 @font-face {
   font-family: "Noto Sans";
   src: url("../fonts/NotoSans-Italic.ttf") format("truetype");
@@ -16,7 +15,6 @@
   font-style: italic;
 }
 
-/* Bold */
 @font-face {
   font-family: "Noto Sans";
   src: url("../fonts/NotoSans-Bold.ttf") format("truetype");
@@ -24,10 +22,23 @@
   font-style: normal;
 }
 
-/* Bold Italic */
 @font-face {
   font-family: "Noto Sans";
   src: url("../fonts/NotoSans-BoldItalic.ttf") format("truetype");
   font-weight: 700;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Josefin Sans";
+  src: url("../fonts/JosefinSans[wght].ttf") format("truetype-variations");
+  font-weight: 100 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Josefin Sans";
+  src: url("../fonts/JosefinSans-Italic[wght].ttf") format("truetype-variations");
+  font-weight: 100 700;
   font-style: italic;
 }

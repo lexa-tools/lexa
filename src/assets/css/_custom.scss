@@ -67,7 +67,9 @@ body {
 
   &__h1 {
     background-color: variables.$bg-gray-1;
+    color: variables.$bg-gray-3;
     display: inline-block;
+    font-family: "Josefin Sans";
     font-weight: 700;
     margin-bottom: 0;
     margin-left: 60px;
