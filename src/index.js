@@ -1,3 +1,6 @@
+/* Copyright (C) 2025 Stefano
+Licensed under the GNU GPL v3. See LICENSE file for details. */
+
 const { app, BrowserWindow, Menu, dialog } = require('electron');
 const path = require('node:path');
 const fs = require('fs');

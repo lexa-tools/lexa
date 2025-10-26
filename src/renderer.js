@@ -1,3 +1,5 @@
+/* Copyright (C) 2025 Stefano
+Licensed under the GNU GPL v3. See LICENSE file for details. */
 
 // Send lexadb name
 window.electronAPI.onLexadbName((lexadbName) => {
