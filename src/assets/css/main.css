@@ -1546,6 +1546,33 @@ progress {
   opacity: 0.25;
 }
 
+.badge {
+  --bs-badge-padding-x: 0.65em;
+  --bs-badge-padding-y: 0.35em;
+  --bs-badge-font-size: 0.75em;
+  --bs-badge-font-weight: 700;
+  --bs-badge-color: #fff;
+  --bs-badge-border-radius: var(--bs-border-radius);
+  display: inline-block;
+  padding: var(--bs-badge-padding-y) var(--bs-badge-padding-x);
+  font-size: var(--bs-badge-font-size);
+  font-weight: var(--bs-badge-font-weight);
+  line-height: 1;
+  color: var(--bs-badge-color);
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: var(--bs-badge-border-radius);
+}
+.badge:empty {
+  display: none;
+}
+
+.btn .badge {
+  position: relative;
+  top: -1px;
+}
+
 .align-baseline {
   vertical-align: baseline !important;
 }
@@ -6367,6 +6394,10 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 700;
 }
 
+table td:first-child {
+  width: 100px;
+}
+
 /* Sidebar */
 .sidebar {
   align-items: center;
@@ -6440,8 +6471,6 @@ h1, h2, h3, h4, h5, h6 {
   background: #f4f4f4;
   border-radius: 16px;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
-  display: flex;
-  flex-direction: column;
   overflow: auto;
   padding: 1rem;
   width: 100%;
@@ -6477,6 +6506,11 @@ h1, h2, h3, h4, h5, h6 {
 }
 .statusbar__dbpath {
   font-size: 0.8rem;
+}
+
+.text-bg-gray-3 {
+  color: #f4f4f4;
+  background-color: #5a5a5a;
 }
 
 /*# sourceMappingURL=main.css.map */

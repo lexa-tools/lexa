@@ -1,5 +1,6 @@
 schema: lexadb
 name: "ぶろみ, Bromi"
+author: "Stefano Coretta"
 languages:
   bro: "Bromi"
   meta:

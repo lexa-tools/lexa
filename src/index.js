@@ -100,8 +100,10 @@ async function openLexadb() {
 
     const config = readConfig(lexadbPath);
     const lexadbName = config.name;
+    const lexadbAuthor = config.author;
 
     mainWindow.webContents.send('lexadb-name', lexadbName);
+    mainWindow.webContents.send('lexadb-author', lexadbAuthor);
     mainWindow.webContents.send('lexadb-opened', lexadbPath);
     mainWindow.webContents.send('lexadb-validation', validation);
   }

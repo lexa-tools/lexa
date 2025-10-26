@@ -7,6 +7,12 @@ window.electronAPI.onLexadbName((lexadbName) => {
   pathElement.textContent = `${lexadbName}`;
 });
 
+// Send lexadb author
+window.electronAPI.onLexadbAuthor((lexadbAuthor) => {
+  const pathElement = document.getElementById('lexadb-author');
+  pathElement.textContent = `${lexadbAuthor}`;
+});
+
 // Send lexadb path
 window.electronAPI.onLexadbOpened((lexadbPath) => {
   const pathElement = document.getElementById('lexadb-path');
