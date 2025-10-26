@@ -6345,6 +6345,7 @@ progress {
 }
 body {
   box-sizing: border-box;
+  color: #323232;
   font-family: "Noto Sans";
   height: calc(100vh - 25px);
   margin: 0;
@@ -6393,8 +6394,21 @@ body {
   flex-direction: column;
   height: min(95%, 100vh - 25px);
   overflow: auto;
-  padding: 2rem;
+  padding-top: 2rem;
   width: 95%;
+}
+.main__titlebar {
+  background-color: #5a5a5a;
+}
+.main__h1 {
+  background-color: #f4f4f4;
+  display: inline-block;
+  font-weight: 700;
+  margin-bottom: 0;
+  margin-left: 60px;
+  margin-top: 0;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
 /* Corner */
