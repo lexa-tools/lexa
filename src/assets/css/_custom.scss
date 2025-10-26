@@ -11,6 +11,7 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6 {
+  color: variables.$bg-gray-3;
   font-family: "Josefin Sans";
   font-weight: 700;
 }
@@ -94,15 +95,32 @@ table td:first-child {
   overflow: auto;
   padding: 1rem;
   width: min(95%);
-}
 
-.onsheet {
-  background: variables.$bg-gray-1;
-  border-radius: 16px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
-  overflow: auto;
-  padding: 1rem;
-  width: 100%;
+  &__h6 {
+    overflow: hidden;
+    padding-left: 25px;
+    position: relative;
+
+    &::before {
+      background: variables.$bg-gray-3;
+      border-radius: 20px;
+      content: "";
+      height: 4px;
+      left: 0;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 100%;
+      z-index: 0;
+    }
+
+    &__span {
+      background: variables.$bg-gray-1;
+      padding: 0 0.5em;
+      position: relative;
+      z-index: 1;
+    }
+  }
 }
 
 /* Corner */

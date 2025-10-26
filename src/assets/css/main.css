@@ -6390,6 +6390,7 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6 {
+  color: #5a5a5a;
   font-family: "Josefin Sans";
   font-weight: 700;
 }
@@ -6466,14 +6467,28 @@ table td:first-child {
   padding: 1rem;
   width: 95%;
 }
-
-.onsheet {
-  background: #f4f4f4;
-  border-radius: 16px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
-  overflow: auto;
-  padding: 1rem;
+.sheet__h6 {
+  overflow: hidden;
+  padding-left: 25px;
+  position: relative;
+}
+.sheet__h6::before {
+  background: #5a5a5a;
+  border-radius: 20px;
+  content: "";
+  height: 4px;
+  left: 0;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
   width: 100%;
+  z-index: 0;
+}
+.sheet__h6__span {
+  background: #f4f4f4;
+  padding: 0 0.5em;
+  position: relative;
+  z-index: 1;
 }
 
 /* Corner */
