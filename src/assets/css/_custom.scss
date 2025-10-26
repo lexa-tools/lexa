@@ -2,6 +2,10 @@
 
 @use 'variables';
 
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
 body {
   box-sizing: border-box;
   color: variables.$bg-gray-4;
@@ -14,6 +18,10 @@ h1, h2, h3, h4, h5, h6 {
   color: variables.$bg-gray-3;
   font-family: "Josefin Sans";
   font-weight: 700;
+}
+
+p {
+  margin: 0;
 }
 
 table td:first-child {
@@ -163,4 +171,35 @@ table td:first-child {
 .text-bg-gray-3 {
   color: variables.$bg-gray-1;
   background-color: variables.$bg-gray-3;
+}
+
+.badge {
+  --bs-badge-padding-x: 0.65em;
+  --bs-badge-padding-y: 0.35em;
+  --bs-badge-font-size: 0.75em;
+  --bs-badge-font-weight: 700;
+  --bs-badge-color: #fff;
+  --bs-badge-border-radius: var(--bs-border-radius);
+  display: inline-block;
+  padding: var(--bs-badge-padding-y) var(--bs-badge-padding-x);
+  font-size: var(--bs-badge-font-size);
+  font-weight: var(--bs-badge-font-weight);
+  line-height: 1;
+  color: var(--bs-badge-color);
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: var(--bs-badge-border-radius);
+}
+.badge:empty {
+  display: none;
+}
+
+.btn .badge {
+  position: relative;
+  top: -1px;
+}
+
+.rounded-pill {
+  border-radius: 50rem !important;
 }
