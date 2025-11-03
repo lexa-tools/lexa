@@ -127,6 +127,10 @@ table td:first-child {
       padding: 0 0.5em;
       position: relative;
       z-index: 1;
+
+      &__icon {
+        font-size: 0.9em;
+      }
     }
   }
 }
