@@ -1,0 +1,173 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "properties": {
+        "id": {
+            "type": "string"
+        },
+        "title": {
+            "type": "string"
+        },
+        "topic": {
+            "type": "string"
+        },
+        "genre": {
+            "type": "string"
+        },
+        "participants": {
+            "type": "string"
+        },
+        "translators": {
+            "type": "string"
+        },
+        "source": {
+            "type": "string"
+        },
+        "sentences": {
+            "type": "object",
+            "patternProperties": {
+                "^st_\\d+$": {
+                    "type": "object",
+                    "properties": {
+                        "id": {
+                            "type": "string"
+                        },
+                        "sentence": {
+                            "oneOf": [
+                                {
+                                    "type": "string"
+                                },
+                                {
+                                    "$ref": "#/definitions/writing"
+                                }
+                            ]
+                        },
+                        "phonetic": {
+                            "oneOf": [
+                                {
+                                    "type": "string"
+                                },
+                                {
+                                    "type": "object"
+                                }
+                            ]
+                        },
+                        "phonemic": {
+                            "oneOf": [
+                                {
+                                    "type": "string"
+                                },
+                                {
+                                    "type": "object"
+                                }
+                            ]
+                        },
+                        "morphophonemic": {
+                            "oneOf": [
+                                {
+                                    "type": "string"
+                                },
+                                {
+                                    "type": "object"
+                                }
+                            ]
+                        },
+                        "morphemes": {
+                            "oneOf": [
+                                {
+                                    "type": "string"
+                                },
+                                {
+                                    "type": "object"
+                                }
+                            ]
+                        },
+                        "gloss": {
+                            "oneOf": [
+                                {
+                                    "type": "string"
+                                },
+                                {
+                                    "type": "object"
+                                }
+                            ]
+                        },
+                        "translation": {
+                            "oneOf": [
+                                {
+                                    "type": "string"
+                                },
+                                {
+                                    "type": "object"
+                                }
+                            ]
+                        },
+                        "literal": {
+                            "oneOf": [
+                                {
+                                    "type": "string"
+                                },
+                                {
+                                    "type": "object"
+                                }
+                            ]
+                        },
+                        "notes": {
+                            "oneOf": [
+                                {
+                                    "type": "string"
+                                },
+                                {
+                                    "type": "object"
+                                }
+                            ]
+                        }
+                    },
+                    "additionalProperties": false
+                }
+            }
+        },
+        "notes": {
+            "oneOf": [
+                {
+                    "type": "string"
+                },
+                {
+                    "type": "object"
+                }
+            ]
+        }
+    },
+    "additionalProperties": false,
+    "definitions": {
+        "writing": {
+            "type": "object",
+            "additionalProperties": {
+                "oneOf": [
+                    { "type": "string" },
+                    {
+                        "type": "object",
+                        "minProperties": 2,
+                        "properties": {
+                            "text": { "type": "string" },
+                            "transliteration": {
+                                "oneOf": [
+                                    { "type": "string" },
+                                    { "type": "object" }
+                                ]
+                            },
+                            "transcription": {
+                                "oneOf": [
+                                    { "type": "string" },
+                                    { "type": "object" }
+                                ]
+                            }
+                        },
+                        "required": ["text"],
+                        "additionalProperties": false
+                    }
+                ]
+            }
+        }
+    }
+}

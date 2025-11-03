@@ -97,6 +97,7 @@ async function openLexadb() {
     const lexadbPath = result.filePaths[0];
 
     const validated = validation.validateLexadb(lexadbPath);
+    const validatedLexicon = validation.validateLexicon(lexadbPath);
 
     const config = validation.readConfig(lexadbPath);
     const lexadbName = config.name;
