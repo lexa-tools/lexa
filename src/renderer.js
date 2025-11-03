@@ -20,14 +20,14 @@ window.electronAPI.onLexadbOpened((lexadbPath) => {
 });
 
 // Send lexadb validation
-window.electronAPI.onLexadbValidation((validation) => {
+window.electronAPI.onLexadbValidation((validated) => {
   const icon = document.getElementById('lexadb-validation');
 
   // Clear any previous validation classes
   icon.classList.remove('valid', 'invalid');
 
   // Apply a new class based on validation
-  if (validation.valid) {
+  if (validated.valid) {
     icon.classList.add('statusbar__icon--valid');
   } else {
     icon.classList.add('statusbar__icon--invalid');

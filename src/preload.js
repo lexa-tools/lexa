@@ -10,5 +10,5 @@ contextBridge.exposeInMainWorld('electronAPI', {
   onLexadbName: (callback) => ipcRenderer.on('lexadb-name', (event, lexadbName) => callback(lexadbName)),
   onLexadbAuthor: (callback) => ipcRenderer.on('lexadb-author', (event, lexadbAuthor) => callback(lexadbAuthor)),
   onLexadbOpened: (callback) => ipcRenderer.on('lexadb-opened', (event, lexadbPath) => callback(lexadbPath)),
-  onLexadbValidation: (callback) => ipcRenderer.on('lexadb-validation', (event, validation) => callback(validation))
+  onLexadbValidation: (callback) => ipcRenderer.on('lexadb-validation', (event, validated) => callback(validated))
 });

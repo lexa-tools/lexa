@@ -4,7 +4,7 @@ Licensed under the GNU GPL v3. See LICENSE file for details. */
 const { app, BrowserWindow, Menu, dialog } = require('electron');
 const path = require('node:path');
 const fs = require('fs');
-const yaml = require('yaml');
+const validation = require('./validation')
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
 if (require('electron-squirrel-startup')) {
@@ -96,46 +96,15 @@ async function openLexadb() {
   if (!result.canceled && result.filePaths.length > 0) {
     const lexadbPath = result.filePaths[0];
 
-    const validation = validateLexadb(lexadbPath);
+    const validated = validation.validateLexadb(lexadbPath);
 
-    const config = readConfig(lexadbPath);
+    const config = validation.readConfig(lexadbPath);
     const lexadbName = config.name;
     const lexadbAuthor = config.author;
 
     mainWindow.webContents.send('lexadb-name', lexadbName);
     mainWindow.webContents.send('lexadb-author', lexadbAuthor);
     mainWindow.webContents.send('lexadb-opened', lexadbPath);
-    mainWindow.webContents.send('lexadb-validation', validation);
+    mainWindow.webContents.send('lexadb-validation', validated);
   }
-}
-
-const expectedStructure = [
-  'lexicon',
-  'collections',
-  'config.yaml',
-  'grammar.yaml'
-];
-
-function validateLexadb(lexadbPath) {
-  try {
-    const entries = fs.readdirSync(lexadbPath);
-    const missing = expectedStructure.filter(item => !entries.includes(item));
-
-    const config = readConfig(lexadbPath);
-
-    if (missing.length === 0 && config.schema === 'lexadb') {
-      return { valid: true };
-    } else {
-      console.log(missing)
-      return { valid: false, missing };
-    }
-  } catch (err) {
-    return { valid: false, error: err.message };
-  }
-}
-
-function readConfig(lexadbPath) {
-  const config = yaml.parse(fs.readFileSync(path.join(lexadbPath, 'config.yaml'), 'utf8'));
-
-  return config;
 }
