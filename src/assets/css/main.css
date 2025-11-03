@@ -201,22 +201,15 @@ table td:first-child {
 
 /* Badge */
 .badge {
-  --bs-badge-padding-x: 0.65em;
-  --bs-badge-padding-y: 0.35em;
-  --bs-badge-font-size: 0.75em;
-  --bs-badge-font-weight: 700;
-  --bs-badge-color: #fff;
-  --bs-badge-border-radius: var(--bs-border-radius);
   display: inline-block;
-  padding: var(--bs-badge-padding-y) var(--bs-badge-padding-x);
-  font-size: var(--bs-badge-font-size);
-  font-weight: var(--bs-badge-font-weight);
+  padding: 0.35em 0.65em;
+  font-size: 0.75em;
+  font-weight: 700;
   line-height: 1;
-  color: var(--bs-badge-color);
   text-align: center;
   white-space: nowrap;
   vertical-align: baseline;
-  border-radius: var(--bs-badge-border-radius);
+  border-radius: 0.25rem;
 }
 
 .badge:empty {
@@ -230,6 +223,33 @@ table td:first-child {
 
 .rounded-pill {
   border-radius: 50rem !important;
+}
+
+.split-badge {
+  display: inline-flex;
+  border-radius: 50rem !important;
+  overflow: hidden;
+  font-size: 0.75em;
+  font-weight: 700;
+  line-height: 1;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+}
+
+.badge-label {
+  padding: 0.35em 0.65em;
+}
+
+.badge-count {
+  border: 1px solid #5a5a5a;
+  border-left: none;
+  border-top-right-radius: 50rem;
+  border-bottom-right-radius: 50rem;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  color: #5a5a5a;
+  padding: 0.245em 0.65em;
 }
 
 /*# sourceMappingURL=main.css.map */
