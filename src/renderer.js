@@ -32,4 +32,12 @@ window.electronAPI.onLexadbValidation((validated) => {
   } else {
     icon.classList.add('statusbar__icon--invalid');
   }
+
+  const dbValid = document.getElementById('db-valid');
+
+  if (validated.valid) {
+    dbValid.classList.add('statusbar__icon--valid');
+  } else {
+    dbValid.classList.add('statusbar__icon--invalid');
+  }
 });
