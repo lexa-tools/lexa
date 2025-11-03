@@ -16,7 +16,7 @@ const expectedStructure = [
   'grammar.yaml'
 ];
 
-function validateLexadb(lexadbPath) {
+async function validateLexadb(lexadbPath) {
   try {
     const entries = fs.readdirSync(lexadbPath);
     const missing = expectedStructure.filter(item => !entries.includes(item));
@@ -51,6 +51,8 @@ const lexiconSchemaPath = path.join(__dirname, 'assets', 'schemas', 'lx-schema.j
 const lexiconSchema = JSON.parse(fs.readFileSync(lexiconSchemaPath, 'utf8'));
 
 async function validateLexicon(lexadbPath) {
+    let count = 0
+
     try {
     const validate = await ajv.compileAsync(lexiconSchema);
     const files = glob.sync(path.join(lexadbPath, 'lexicon', '*.yaml'));
@@ -66,14 +68,17 @@ async function validateLexicon(lexadbPath) {
       if (valid) {
         console.log(`${file}: valid`);
       } else {
+        count = count + 1;
         console.log(`${file}: invalid`);
         console.log(validate.errors);
         hasError = true;
       }
     }
   } catch (err) {
-    return { error: err.message}
+    console.log(err.message)
   }
+
+  return { valid: count === 0 };
 }
 
 module.exports = { validateLexadb, validateLexicon};

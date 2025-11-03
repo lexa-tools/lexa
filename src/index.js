@@ -97,8 +97,8 @@ async function openLexadb() {
   if (!result.canceled && result.filePaths.length > 0) {
     const lexadbPath = result.filePaths[0];
 
-    const validated = validation.validateLexadb(lexadbPath);
-    const validatedLexicon = validation.validateLexicon(lexadbPath);
+    const validated = await validation.validateLexadb(lexadbPath);
+    const validatedLexicon = await validation.validateLexicon(lexadbPath);
 
     const config = read.readConfig(lexadbPath);
     const lexadbName = config.name;
@@ -108,6 +108,7 @@ async function openLexadb() {
     mainWindow.webContents.send('lexadb-author', lexadbAuthor);
     mainWindow.webContents.send('lexadb-opened', lexadbPath);
     mainWindow.webContents.send('lexadb-validation', validated);
+    mainWindow.webContents.send('lexicon-validation', validatedLexicon);
   }
 }
 

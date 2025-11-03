@@ -41,3 +41,17 @@ window.electronAPI.onLexadbValidation((validated) => {
     dbValid.classList.add('statusbar__icon--invalid');
   }
 });
+
+window.electronAPI.onLexiconValidation((validatedLexicon) => {
+  const lexValid = document.getElementById('lexicon-valid');
+
+  // Clear any previous validation classes
+  lexValid.classList.remove('valid', 'invalid');
+
+  // Apply a new class based on validation
+  if (validatedLexicon.valid) {
+    lexValid.classList.add('statusbar__icon--valid');
+  } else {
+    lexValid.classList.add('statusbar__icon--invalid');
+  }
+});
