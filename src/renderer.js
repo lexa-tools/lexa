@@ -28,17 +28,17 @@ window.electronAPI.onLexadbValidation((validated) => {
 
   // Apply a new class based on validation
   if (validated.valid) {
-    icon.classList.add('statusbar__icon--valid');
+    icon.classList.add('status--valid');
   } else {
-    icon.classList.add('statusbar__icon--invalid');
+    icon.classList.add('status--invalid');
   }
 
   const dbValid = document.getElementById('db-valid');
 
   if (validated.valid) {
-    dbValid.classList.add('statusbar__icon--valid');
+    dbValid.classList.add('status--valid');
   } else {
-    dbValid.classList.add('statusbar__icon--invalid');
+    dbValid.classList.add('status--invalid');
   }
 });
 
@@ -50,8 +50,8 @@ window.electronAPI.onLexiconValidation((validatedLexicon) => {
 
   // Apply a new class based on validation
   if (validatedLexicon.valid) {
-    lexValid.classList.add('statusbar__icon--valid');
+    lexValid.classList.add('status--valid');
   } else {
-    lexValid.classList.add('statusbar__icon--invalid');
+    lexValid.classList.add('status--invalid');
   }
 });

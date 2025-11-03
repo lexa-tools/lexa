@@ -131,12 +131,13 @@ table td:first-child {
   padding: 1rem;
   width: 95%;
 }
-.sheet__h6 {
+
+.header {
   overflow: hidden;
   padding-left: 25px;
   position: relative;
 }
-.sheet__h6::before {
+.header::before {
   background: #5a5a5a;
   border-radius: 20px;
   content: "";
@@ -148,13 +149,13 @@ table td:first-child {
   width: 100%;
   z-index: 0;
 }
-.sheet__h6__span {
+.header__span {
   background: #f4f4f4;
   padding: 0 0.5em;
   position: relative;
   z-index: 1;
 }
-.sheet__h6__span__icon {
+.header__status {
   font-size: 0.9em;
 }
 
@@ -180,14 +181,15 @@ table td:first-child {
   width: calc(100vw - 60px);
   z-index: 100;
 }
-.statusbar__icon--valid {
-  color: green;
-}
-.statusbar__icon--invalid {
-  color: red;
-}
 .statusbar__dbpath {
   font-size: 0.8rem;
+}
+
+.status--valid {
+  color: green;
+}
+.status--invalid {
+  color: red;
 }
 
 .text-bg-gray-3 {

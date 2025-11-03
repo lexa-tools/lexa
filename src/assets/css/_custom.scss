@@ -103,35 +103,35 @@ table td:first-child {
   overflow: auto;
   padding: 1rem;
   width: min(95%);
+}
 
-  &__h6 {
-    overflow: hidden;
-    padding-left: 25px;
+.header {
+  overflow: hidden;
+  padding-left: 25px;
+  position: relative;
+
+  &::before {
+    background: variables.$bg-gray-3;
+    border-radius: 20px;
+    content: "";
+    height: 4px;
+    left: 0;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+    z-index: 0;
+  }
+
+  &__span {
+    background: variables.$bg-gray-1;
+    padding: 0 0.5em;
     position: relative;
+    z-index: 1;
+  }
 
-    &::before {
-      background: variables.$bg-gray-3;
-      border-radius: 20px;
-      content: "";
-      height: 4px;
-      left: 0;
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 100%;
-      z-index: 0;
-    }
-
-    &__span {
-      background: variables.$bg-gray-1;
-      padding: 0 0.5em;
-      position: relative;
-      z-index: 1;
-
-      &__icon {
-        font-size: 0.9em;
-      }
-    }
+  &__status {
+    font-size: 0.9em;
   }
 }
 
@@ -157,18 +157,18 @@ table td:first-child {
   width: calc(100vw - 60px);
   z-index: 100;
 
-  &__icon {
-    &--valid {
-      color: green;
-    }
-
-    &--invalid {
-      color: red;
-    }
-  }
-
   &__dbpath {
     font-size: 0.8rem;
+  }
+}
+
+.status {
+  &--valid {
+    color: green;
+  }
+
+  &--invalid {
+    color: red;
   }
 }
 
