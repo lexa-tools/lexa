@@ -1,13 +1,13 @@
 /* Copyright (C) 2025 Stefano
 Licensed under the GNU GPL v3. See LICENSE file for details. */
 
-const { app, BrowserWindow, Menu, dialog } = require('electron');
 const path = require('node:path');
 const fs = require('fs');
 const yaml = require('yaml');
 const glob = require('glob');
 const Ajv = require('ajv');
 const addFormats = require('ajv-formats');
+const read = require('./read');
 
 const expectedStructure = [
   'lexicon',
@@ -21,7 +21,7 @@ function validateLexadb(lexadbPath) {
     const entries = fs.readdirSync(lexadbPath);
     const missing = expectedStructure.filter(item => !entries.includes(item));
 
-    const config = readConfig(lexadbPath);
+    const config = read.readConfig(lexadbPath);
 
     if (missing.length === 0 && config.schema === 'lexadb') {
       return { valid: true };
@@ -76,10 +76,4 @@ async function validateLexicon(lexadbPath) {
   }
 }
 
-function readConfig(lexadbPath) {
-  const config = yaml.parse(fs.readFileSync(path.join(lexadbPath, 'config.yaml'), 'utf8'));
-
-  return config;
-}
-
-module.exports = { validateLexadb,validateLexicon, readConfig};
+module.exports = { validateLexadb, validateLexicon};

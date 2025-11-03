@@ -4,7 +4,8 @@ Licensed under the GNU GPL v3. See LICENSE file for details. */
 const { app, BrowserWindow, Menu, dialog } = require('electron');
 const path = require('node:path');
 const fs = require('fs');
-const validation = require('./validation')
+const validation = require('./validation');
+const read = require('./read');
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
 if (require('electron-squirrel-startup')) {
@@ -99,7 +100,7 @@ async function openLexadb() {
     const validated = validation.validateLexadb(lexadbPath);
     const validatedLexicon = validation.validateLexicon(lexadbPath);
 
-    const config = validation.readConfig(lexadbPath);
+    const config = read.readConfig(lexadbPath);
     const lexadbName = config.name;
     const lexadbAuthor = config.author;
 
@@ -109,3 +110,4 @@ async function openLexadb() {
     mainWindow.webContents.send('lexadb-validation', validated);
   }
 }
+
