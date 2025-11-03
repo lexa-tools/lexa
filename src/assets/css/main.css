@@ -37,6 +37,7 @@ Licensed under the GNU GPL v3. See LICENSE file for details. */
   font-weight: 100 700;
   font-style: italic;
 }
+/* RESET */
 *, *::before, *::after {
   box-sizing: border-box;
 }
@@ -112,6 +113,45 @@ table td:first-child {
   padding-right: 10px;
 }
 
+/* Corner */
+.corner {
+  background-color: #5a5a5a;
+  bottom: 0;
+  height: 26px;
+  position: fixed;
+  width: 60px;
+  z-index: 100;
+}
+
+/* Statusbar */
+.statusbar {
+  background-color: #aaaaaa;
+  bottom: 0;
+  height: 26px;
+  left: 60px;
+  line-height: 26px;
+  padding-left: 10px;
+  position: fixed;
+  width: calc(100vw - 60px);
+  z-index: 100;
+}
+.statusbar__dbpath {
+  font-size: 0.8rem;
+}
+
+.status--valid {
+  color: green;
+}
+.status--invalid {
+  color: red;
+}
+
+.text-bg-gray-3 {
+  color: #f4f4f4;
+  background-color: #5a5a5a;
+}
+
+/* Sheet */
 .container-main {
   align-items: center;
   display: flex;
@@ -159,44 +199,7 @@ table td:first-child {
   font-size: 0.9em;
 }
 
-/* Corner */
-.corner {
-  background-color: #5a5a5a;
-  bottom: 0;
-  height: 26px;
-  position: fixed;
-  width: 60px;
-  z-index: 100;
-}
-
-/* Statusbar */
-.statusbar {
-  background-color: #aaaaaa;
-  bottom: 0;
-  height: 26px;
-  left: 60px;
-  line-height: 26px;
-  padding-left: 10px;
-  position: fixed;
-  width: calc(100vw - 60px);
-  z-index: 100;
-}
-.statusbar__dbpath {
-  font-size: 0.8rem;
-}
-
-.status--valid {
-  color: green;
-}
-.status--invalid {
-  color: red;
-}
-
-.text-bg-gray-3 {
-  color: #f4f4f4;
-  background-color: #5a5a5a;
-}
-
+/* Badge */
 .badge {
   --bs-badge-padding-x: 0.65em;
   --bs-badge-padding-y: 0.35em;

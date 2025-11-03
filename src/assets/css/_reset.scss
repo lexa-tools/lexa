@@ -1,0 +1,30 @@
+// reset.scss 
+
+@use 'variables';
+
+/* RESET */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  box-sizing: border-box;
+  color: variables.$bg-gray-4;
+  font-family: variables.$font-sans-serif;
+  height: calc(100vh - 25px);
+  margin: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: variables.$bg-gray-3;
+  font-family: "Josefin Sans";
+  font-weight: 700;
+}
+
+p {
+  margin: 0;
+}
+
+table td:first-child {
+  width: 100px;
+}
