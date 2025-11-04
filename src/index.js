@@ -105,6 +105,7 @@ async function openLexadb() {
     const lexadbName = config.name;
     const lexadbAuthor = config.author;
     const lexiconSummary = await lexicon.lexiconSummarise(lexadbPath);
+    const lexiconCounts = await lexicon.lexiconCount(lexadbPath);
 
     mainWindow.webContents.send('lexadb-name', lexadbName);
     mainWindow.webContents.send('lexadb-author', lexadbAuthor);
@@ -112,6 +113,7 @@ async function openLexadb() {
     mainWindow.webContents.send('lexadb-validation', validated);
     mainWindow.webContents.send('lexicon-validation', validatedLexicon);
     mainWindow.webContents.send('lexicon-summary', lexiconSummary);
+    mainWindow.webContents.send('lexicon-counts', lexiconCounts);
   }
 }
 

@@ -12,5 +12,28 @@ async function lexiconSummarise(lexadbPath) {
     return { entries: files.length };
 }
 
-module.exports = { lexiconSummarise };
+async function lexiconCount(lexadbPath) {
+  const counts = {
+    morph_category: {},
+    morph_type: {},
+    part_of_speech: {},
+  };
+
+  const files = glob.sync(path.join(lexadbPath, 'lexicon', '*.yaml'));
+
+  for (const file of files) {
+    const data = yaml.parse(fs.readFileSync(file, "utf8"));
+
+    ["morph_category", "morph_type", "part_of_speech"].forEach(field => {
+      if (data[field]) {
+        const value = data[field];
+        counts[field][value] = (counts[field][value] || 0) + 1;
+      }
+    });
+  }
+//   console.log(counts);
+  return counts;
+}
+
+module.exports = { lexiconSummarise, lexiconCount };
 
