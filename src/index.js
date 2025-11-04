@@ -6,6 +6,7 @@ const path = require('node:path');
 const fs = require('fs');
 const validation = require('./validation');
 const read = require('./read');
+const lexicon = require('./lexicon')
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
 if (require('electron-squirrel-startup')) {
@@ -103,12 +104,14 @@ async function openLexadb() {
     const config = read.readConfig(lexadbPath);
     const lexadbName = config.name;
     const lexadbAuthor = config.author;
+    const lexiconSummary = await lexicon.lexiconSummarise(lexadbPath);
 
     mainWindow.webContents.send('lexadb-name', lexadbName);
     mainWindow.webContents.send('lexadb-author', lexadbAuthor);
     mainWindow.webContents.send('lexadb-opened', lexadbPath);
     mainWindow.webContents.send('lexadb-validation', validated);
     mainWindow.webContents.send('lexicon-validation', validatedLexicon);
+    mainWindow.webContents.send('lexicon-summary', lexiconSummary);
   }
 }
 

@@ -30,7 +30,7 @@
       <div class="container-main">
         <div class="sheet">
           <h6 class="header"><span class="header__span"><i id = "db-valid" class="fa-solid fa-circle header__status"></i> DATABASE</span></h6>
-          <table>
+          <table class="width-100">
             <tr>
               <td><span class="badge rounded-pill text-bg-gray-3">Name</span></td>
               <td><span id="lexadb-name"></span></td>
@@ -42,9 +42,27 @@
           </table>
 
           <h6 class="header"><span class="header__span"><i id="lexicon-valid" class="fa-solid fa-circle header__status"></i> LEXICON</span></h6>
+          <table class="width-150">
+            <tr>
+              <td><span class="badge rounded-pill text-bg-gray-3">Entries</span></td>
+              <td><span id="lexadb-entries"></span></td>
+            </tr>
+            <tr>
+              <td><span class="badge rounded-pill text-bg-gray-3">Categories</span></td>
+              <td><span id="lexadb-categories"></span></td>
+            </tr>
+            <tr>
+              <td><span class="badge rounded-pill text-bg-gray-3">Morpheme types</span></td>
+              <td><span id="lexadb-morphtypes"></span></td>
+            </tr>
+            <tr>
+              <td><span class="badge rounded-pill text-bg-gray-3">POS</span></td>
+              <td><span id="lexadb-pos"></span></td>
+            </tr>
+          </table>
           <!-- <div class="split-badge"><span class="badge-label text-bg-gray-3">Nouns</span><span class="badge-count">10</span></div> -->
 
-          <h6 class="header"><span class="header__span"><i class="fa-solid fa-circle header__icon"></i> COLLECTIONS</span></h6>
+          <h6 class="header"><span class="header__span"><i class="fa-solid fa-circle header__status"></i> COLLECTIONS</span></h6>
         </div>
       </div>
     </div>

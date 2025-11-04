@@ -53,3 +53,11 @@
     font-size: 0.9em;
   }
 }
+
+.width-100 td:first-child {
+  width: 100px;
+}
+
+.width-150 td:first-child {
+  width: 150px;
+}

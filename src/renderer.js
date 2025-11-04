@@ -55,3 +55,9 @@ window.electronAPI.onLexiconValidation((validatedLexicon) => {
     lexValid.classList.add('status--invalid');
   }
 });
+
+window.electronAPI.onLexiconSummary((lexiconSummary) => {
+  const entries = document.getElementById('lexadb-entries');
+
+  entries.textContent = `${lexiconSummary.entries}`;
+});
