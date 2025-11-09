@@ -1,0 +1,17 @@
+{
+    "id": "cx_000002",
+    "name": "Stem",
+    "type": "morphological",
+    "form": [
+        {
+            "id": "cx_000002a",
+            "name": "Consonantal Stem",
+            "form": ["cx_000003"]
+        },
+        {
+            "id": "cx_000002b",
+            "name": "Vocalic Stem",
+            "form": ["cx_000003", "cx_000004"]
+        }
+    ]
+}

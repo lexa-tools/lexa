@@ -1,0 +1,13 @@
+{
+    "id": "lx_000001",
+    "display": "alda",
+    "type": "cx_000001",
+    "form": ["mr_000001", "mr_000002"],
+    "senses": [
+        {
+            "id": "se_01",
+            "gloss": "tree",
+            "definition": "a tree"
+        }
+    ]
+}
