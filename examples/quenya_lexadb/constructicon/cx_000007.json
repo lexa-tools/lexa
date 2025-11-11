@@ -1,0 +1,11 @@
+{
+    "id": "cx_000007",
+    "name": "Vocalic Stem Nominative Singular",
+    "type": "morphological",
+    "form": ["cx_000006"],
+    "inflectional": {
+        "case": "nominative",
+        "number": "singular",
+        "noun-class": "vocalic"
+     }
+}
