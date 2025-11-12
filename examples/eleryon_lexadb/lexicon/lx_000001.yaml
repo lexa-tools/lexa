@@ -1,9 +1,7 @@
 id: lx_000001
 lexeme: gąryon
 phonemic: ˈgɔrjon
-morph_category: lexical
-morph_type: root
-part_of_speech: noun
+word_class: noun
 inflectional_features:
   class: -jon(t)
 allomorphs:

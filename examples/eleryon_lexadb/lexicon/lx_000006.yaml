@@ -1,9 +1,7 @@
 id: lx_000006
 lexeme: urųrtose
 phonemic: uryrtose
-morph_category: lexical
-morph_type: root
-part_of_speech: verb
+word_class: verb
 inflectional_features:
   class: I
 allomorphs:

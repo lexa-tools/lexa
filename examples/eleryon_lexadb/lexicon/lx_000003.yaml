@@ -1,9 +1,7 @@
 id: lx_000003
 lexeme: vēselse
 phonemic: veɪselse
-morph_category: lexical
-morph_type: root
-part_of_speech: verb
+word_class: verb
 inflectional_features:
   class: II
 allomorphs:
