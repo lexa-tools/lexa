@@ -35,13 +35,7 @@
                 }
             ]
         },
-        "morph_category": {
-            "type": "string"
-        },
-        "morph_type": {
-            "type": "string"
-        },
-        "part_of_speech": {
+        "word_class": {
             "type": "string"
         },
         "inflectional_features": {
@@ -242,9 +236,7 @@
     "required": [
         "id",
         "lexeme",
-        "morph_type",
-        "morph_category",
-        "part_of_speech",
+        "word_class",
         "allomorphs",
         "senses",
         "date_created",

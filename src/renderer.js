@@ -59,34 +59,22 @@ window.electronAPI.onLexiconValidation((validatedLexicon) => {
 window.electronAPI.onLexiconSummary((lexiconSummary) => {
   const entries = document.getElementById('lexicon-entries');
 
-  entries.textContent = `${lexiconSummary.entries}`;
-});
+  const div = document.createElement('div');
+  div.className = 'split-badge';
 
-window.electronAPI.onLexiconCounts((lexiconCounts) => {
-  const container = document.getElementById('lexicon-pos');
-  container.innerHTML = '';
+  const label = document.createElement('span');
+  label.className = 'badge-label text-bg-gray-3';
+  label.textContent = "Total";
 
-  Object.entries(lexiconCounts.part_of_speech).forEach(([pos, count], i, arr) => {
-    const div = document.createElement('div');
-    div.className = 'split-badge';
+  const number = document.createElement('span');
+  number.className = 'badge-count';
+  number.textContent = `${lexiconSummary.entries}`;
 
-    const label = document.createElement('span');
-    label.className = 'badge-label text-bg-gray-3';
-    label.textContent = pos.charAt(0).toUpperCase() + pos.slice(1);
+  div.appendChild(label);
+  div.appendChild(number);
 
-    const number = document.createElement('span');
-    number.className = 'badge-count';
-    number.textContent = count;
-
-    div.appendChild(label);
-    div.appendChild(number);
-    container.appendChild(div);
-
-    // add a space between badges (but not after the last one)
-    if (i < arr.length - 1) {
-      container.appendChild(document.createTextNode(' '));
-    }
-  });
+  entries.innerHTML = '';
+  entries.appendChild(div);
 });
 
 function renderCounts(containerId, counts) {
@@ -117,7 +105,5 @@ function renderCounts(containerId, counts) {
 }
 
 window.electronAPI.onLexiconCounts((lexiconCounts) => {
-  renderCounts('lexicon-categories', lexiconCounts.morph_category);
-  renderCounts('lexicon-types', lexiconCounts.morph_type);
-  renderCounts('lexicon-pos', lexiconCounts.part_of_speech);
+  renderCounts('lexicon-class', lexiconCounts.word_class);
 });

@@ -14,9 +14,7 @@ async function lexiconSummarise(lexadbPath) {
 
 async function lexiconCount(lexadbPath) {
   const counts = {
-    morph_category: {},
-    morph_type: {},
-    part_of_speech: {},
+    word_class: {},
   };
 
   const files = glob.sync(path.join(lexadbPath, 'lexicon', '*.yaml'));
@@ -24,7 +22,7 @@ async function lexiconCount(lexadbPath) {
   for (const file of files) {
     const data = yaml.parse(fs.readFileSync(file, "utf8"));
 
-    ["morph_category", "morph_type", "part_of_speech"].forEach(field => {
+    ["word_class"].forEach(field => {
       if (data[field]) {
         const value = data[field];
         counts[field][value] = (counts[field][value] || 0) + 1;
