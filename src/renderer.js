@@ -56,27 +56,6 @@ window.electronAPI.onLexiconValidation((validatedLexicon) => {
   }
 });
 
-window.electronAPI.onLexiconSummary((lexiconSummary) => {
-  const entries = document.getElementById('lexicon-entries');
-
-  const div = document.createElement('div');
-  div.className = 'split-badge';
-
-  const label = document.createElement('span');
-  label.className = 'badge-label text-bg-gray-3';
-  label.textContent = "Total";
-
-  const number = document.createElement('span');
-  number.className = 'badge-count';
-  number.textContent = `${lexiconSummary.entries}`;
-
-  div.appendChild(label);
-  div.appendChild(number);
-
-  entries.innerHTML = '';
-  entries.appendChild(div);
-});
-
 function renderCounts(containerId, counts) {
   const container = document.getElementById(containerId);
   if (!container) return;
@@ -104,6 +83,11 @@ function renderCounts(containerId, counts) {
   });
 }
 
+window.electronAPI.onLexiconSummary((lexiconSummary) => {
+  renderCounts('lexicon-entries', { total: lexiconSummary.entries });
+});
+
 window.electronAPI.onLexiconCounts((lexiconCounts) => {
   renderCounts('lexicon-class', lexiconCounts.word_class);
 });
+
