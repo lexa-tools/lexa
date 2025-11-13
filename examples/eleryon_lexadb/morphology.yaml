@@ -1,0 +1,36 @@
+word_classes:
+  - name: noun
+    display: noun
+    abbreviation: "n"
+    features:
+      inherent:
+        - declination
+        - theme
+  - name: verb
+    display: verb
+    abbreviation: "v"
+    features:
+      inherent:
+        - class
+        - class_no
+features:
+  - name: declination
+    display: "declination"
+    values:
+      - name: first
+        display: "first"
+        abbreviation: "I"
+      - name: second
+        display: "second"
+        abbreviation: "II"
+  - name: theme
+    display: "theme"
+    values: ["-a", "-aᵉ", "-yon", "-yon(t)", "-yel", "-yel(s)", "-eʔ", "-zis"]
+  - name: class
+    display: "class"
+    values: ["thematic", "athematic"]
+  - name: class_no
+    display: "class number"
+    values: ["I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X"]
+
+

@@ -13,7 +13,7 @@ const expectedStructure = [
   'lexicon',
   'collections',
   'config.yaml',
-  'grammar.yaml'
+  'morphology.yaml'
 ];
 
 async function validateLexadb(lexadbPath) {

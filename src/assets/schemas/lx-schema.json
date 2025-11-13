@@ -38,7 +38,7 @@
         "word_class": {
             "type": "string"
         },
-        "inflectional_features": {
+        "grammatical_features": {
             "type": "object",
             "additionalProperties": {
                 "type": "string"

@@ -2,8 +2,9 @@ id: lx_000003
 lexeme: vēselse
 phonemic: veɪselse
 word_class: verb
-inflectional_features:
-  class: II
+grammatical_features:
+  class: athematic
+  class_no: II
 allomorphs:
   al_01:
     id: al_01
