@@ -1,76 +1,31 @@
-lx_000005:
-  id: lx_000005
-  lexeme: chǭs
-  phon: tʃɵːs
-  morph_category: lexical
-  morph_type: root
-  word_class: adverb
-  allomorphs:
-    al_01:
-      id: al_01
-      morph: chǭs
-      phon: tʃɵːs
-  senses:
-    se_01:
-      id: se_01
-      gloss: tomorrow
-      definition: tomorrow
-  date_created: 2022-01-14 21:13:41
-  date_modified: 2022-01-14 21:13:41
-  notes: Note that in Eleryon this word means 'tomorrow' if used by noon, otherwise
-    it means 'the day after tomorrow'.
-lx_000004:
-  id: lx_000004
-  lexeme: evēsellose
-  phon: eveɪsellose
-  morph_category: lexical
-  morph_type: root
-  word_class: verb
-  inflectional_features:
-    class: IV
-  etymology: From {.etym vēselse} 'to learn'.
-  allomorphs:
-    al_01:
-      id: al_01
-      morph: vēsel
-      phon: veɪsel
-    al_02:
-      id: al_02
-      morph: evēsel
-      phon: eveɪsel
-  senses:
-    se_01:
-      id: se_01
-      gloss: teach
-      definition: to teach
 lx_000001:
   id: lx_000001
   lexeme: gąryon
-  phon: ˈgɔrjon
-  morph_category: lexical
-  morph_type: root
+  phonemic: ˈgɔrjon
   word_class: noun
-  inflectional_features:
-    class: -jon(t)
+  grammatical_features:
+    declination: first
+    theme: -yon(t)
   allomorphs:
     al_01:
       id: al_01
       morph: gąr
-      phon: gɔr
+      phonemic: gɔr
   senses:
     se_01:
       id: se_01
       gloss: soil
       definition: soil, dirt
+  date_created: 2022-01-23T09:51:16Z
+  date_modified: 2022-01-23T09:51:16Z
 lx_000002:
   id: lx_000002
   lexeme: unullose
-  phon: unullose
-  morph_category: lexical
-  morph_type: root
+  phonemic: unullose
   word_class: verb
-  inflectional_features:
-    class: IV
+  grammatical_features:
+    class: thematic
+    class_no: IV
   allomorphs:
     al_01:
       id: al_01
@@ -79,54 +34,27 @@ lx_000002:
     al_02:
       id: al_02
       morph: unul
-      phon: unul
+      phonemic: unul
   senses:
     se_01:
       id: se_01
       gloss: love
       definition: to love
-lx_000006:
-  id: lx_000006
-  lexeme: urųrtose
-  phon: uryrtose
-  morph_category: lexical
-  morph_type: root
-  word_class: verb
-  inflectional_features:
-    class: I
-  allomorphs:
-    al_01:
-      id: al_01
-      morph: ųrt
-      phon: yrt
-    al_02:
-      id: al_02
-      morph: urųrt
-      phon: uryrt
-  senses:
-    se_01:
-      id: se_01
-      gloss: sit
-      definition: to sit
-      examples:
-      - cl_000001:st_000001
-      - cl_000001:st_000002
-  date_created: 2022-01-23 09:51:16
-  date_modified: 2022-01-23 09:51:16
+  date_created: 2022-01-23T09:51:16Z
+  date_modified: 2022-01-23T09:51:16Z
 lx_000003:
   id: lx_000003
   lexeme: vēselse
-  phon: veɪselse
-  morph_category: lexical
-  morph_type: root
+  phonemic: veɪselse
   word_class: verb
-  inflectional_features:
-    class: II
+  grammatical_features:
+    class: athematic
+    class_no: II
   allomorphs:
     al_01:
       id: al_01
       morph: vēsel
-      phon: veɪsel
+      phonemic: veɪsel
   senses:
     se_01:
       id: se_01
@@ -136,4 +64,77 @@ lx_000003:
       id: se_02
       gloss: learn
       definition: to learn
-  date_modified: '2024-02-05'
+  date_created: 2022-01-23T09:51:16Z
+  date_modified: 2022-01-23T09:51:16Z
+lx_000004:
+  id: lx_000004
+  lexeme: evēsellose
+  phonemic: eveɪsellose
+  word_class: verb
+  grammatical_features:
+    class: thematic
+    class_no: IV
+  etymology: From {.etym vēselse} 'to learn'.
+  allomorphs:
+    al_01:
+      id: al_01
+      morph: vēsel
+      phonemic: veɪsel
+    al_02:
+      id: al_02
+      morph: evēsel
+      phonemic: eveɪsel
+  senses:
+    se_01:
+      id: se_01
+      gloss: teach
+      definition: to teach
+  date_created: 2022-01-23T09:51:16Z
+  date_modified: 2022-01-23T09:51:16Z
+lx_000005:
+  id: lx_000005
+  lexeme: chǭs
+  phonemic: tʃɵːs
+  word_class: adverb
+  allomorphs:
+    al_01:
+      id: al_01
+      morph: chǭs
+      phonemic: tʃɵːs
+  senses:
+    se_01:
+      id: se_01
+      gloss: tomorrow
+      definition: tomorrow
+  notes:
+    - Note that in Eleryon this word means 'tomorrow' if used by noon, otherwise
+      it means 'the day after tomorrow'.
+  date_created: 2022-01-14T21:13:41Z
+  date_modified: 2022-01-14T21:13:41Z
+lx_000006:
+  id: lx_000006
+  lexeme: urųrtose
+  phonemic: uryrtose
+  word_class: verb
+  grammatical_features:
+    class: thematic
+    class_no: I
+  allomorphs:
+    al_01:
+      id: al_01
+      morph: ųrt
+      phonemic: yrt
+    al_02:
+      id: al_02
+      morph: urųrt
+      phonemic: uryrt
+  senses:
+    se_01:
+      id: se_01
+      gloss: sit
+      definition: to sit
+      examples:
+        - cl_000001:st_000001
+        - cl_000001:st_000002
+  date_created: 2024-02-07T21:54:25Z
+  date_modified: 2024-02-07T21:54:25Z

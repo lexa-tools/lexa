@@ -4,9 +4,12 @@ Licensed under the GNU GPL v3. See LICENSE file for details. */
 const { app, BrowserWindow, Menu, dialog } = require('electron');
 const path = require('node:path');
 const fs = require('fs');
+const yaml = require('yaml');
 const validation = require('./validation');
 const read = require('./read');
 const lexicon = require('./lexicon')
+
+let currentLexadbPath = null;
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
 if (require('electron-squirrel-startup')) {
@@ -50,6 +53,12 @@ app.whenReady().then(() => {
           label: 'Open Project…',
           accelerator: 'CmdOrCtrl+O',
           click: openLexadb,
+        },
+        {
+          id: 'write-merged',
+          label: 'Write merged lexicon...',
+          enabled: false,
+          click: writeMerged,
         },
         { type: 'separator' },
         { role: 'close' },
@@ -97,6 +106,7 @@ async function openLexadb() {
 
   if (!result.canceled && result.filePaths.length > 0) {
     const lexadbPath = result.filePaths[0];
+    currentLexadbPath = lexadbPath;
 
     const validated = await validation.validateLexadb(lexadbPath);
     const validatedLexicon = await validation.validateLexicon(lexadbPath);
@@ -114,6 +124,61 @@ async function openLexadb() {
     mainWindow.webContents.send('lexicon-validation', validatedLexicon);
     mainWindow.webContents.send('lexicon-summary', lexiconSummary);
     mainWindow.webContents.send('lexicon-counts', lexiconCounts);
+
+    // Make write-merged clickable
+    const menu = Menu.getApplicationMenu();
+    const item = menu.getMenuItemById('write-merged');
+    item.enabled = true;
   }
 }
 
+  async function ensureFolder(folderPath) {
+    try {
+      // mkdir with { recursive: true } will create the folder if it doesn't exist
+      // and do nothing if it already exists
+      await fs.promises.mkdir(folderPath, { recursive: true });
+    } catch (err) {
+      console.error(`Failed to create folder ${folderPath}:`, err);
+      throw err;
+    }
+  }
+
+async function writeMerged() {
+  if (!currentLexadbPath) return;
+
+  const lexiconDir = path.join(currentLexadbPath, 'lexicon');
+
+  const files = await fs.promises.readdir(lexiconDir);
+  const yamlFiles = files.filter(f => f.endsWith('.yaml') || f.endsWith('.yml'));
+
+  const merged = {};
+
+  for (const file of yamlFiles) {
+    const fullPath = path.join(lexiconDir, file);
+    const content = await fs.promises.readFile(fullPath, 'utf8');
+    const obj = yaml.parse(content);
+
+    if (!obj || !obj.id) {
+      throw new Error(`Missing ID in ${file}`);
+    }
+
+    if (merged[obj.id]) {
+      throw new Error(`Duplicate ID: ${obj.id}`);
+    }
+
+    merged[obj.id] = obj;
+  }
+
+  // const { canceled, filePath } = await dialog.showSaveDialog({
+  //   title: 'Write merged lexicon',
+  //   defaultPath: 'lexicon.yaml',
+  //   filters: [{ name: 'YAML', extensions: ['yaml', 'yml'] }]
+  // });
+
+  // if (canceled || !filePath) return;
+
+  await ensureFolder(path.join(currentLexadbPath, 'src'));
+  const filePath = path.join(currentLexadbPath, 'src/lexicon.yaml');
+  const output = yaml.stringify(merged);
+  await fs.promises.writeFile(filePath, output, 'utf8');
+}
