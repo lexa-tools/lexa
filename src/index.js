@@ -184,23 +184,95 @@ async function writeMerged() {
   await fs.promises.writeFile(filePath, output, 'utf8');
 }
 
+// Sorting
+
+function sortEntries(sorted) {
+  if (!Array.isArray(sorted) || sorted.length === 0) {
+    return (a, b) => a.localeCompare(b)
+  }
+
+  const ordered = [...sorted].sort((a, b) => b.length - a.length)
+  const rank = new Map(sorted.map((c, i) => [c, i]))
+
+  function tokenize(str) {
+    const out = []
+    let i = 0
+
+    while (i < str.length) {
+      let matched = false
+
+      for (const sym of ordered) {
+        if (str.startsWith(sym, i)) {
+          out.push(sym)
+          i += sym.length
+          matched = true
+          break
+        }
+      }
+
+      if (!matched) {
+        out.push(str[i])
+        i++
+      }
+    }
+
+    return out
+  }
+
+  return (a, b) => {
+    const ta = tokenize(a)
+    const tb = tokenize(b)
+    const n = Math.min(ta.length, tb.length)
+
+    for (let i = 0; i < n; i++) {
+      if (ta[i] === tb[i]) continue
+
+      const ra = rank.has(ta[i]) ? rank.get(ta[i]) : Infinity
+      const rb = rank.has(tb[i]) ? rank.get(tb[i]) : Infinity
+
+      if (ra !== rb) return ra - rb
+      return ta[i].localeCompare(tb[i])
+    }
+
+    return ta.length - tb.length
+  }
+}
+
+
 // Read lexicon
 
 ipcMain.handle('read-lexicon', async (event, lexadbPath) => {
-  const files = glob.sync(path.join(lexadbPath, 'lexicon', '*.yaml'));
-  const lexemes = [];
+  const files = glob.sync(path.join(lexadbPath, 'lexicon', '*.yaml'))
+  const lexemes = []
 
-  for (const file of files) {
+  // optional config.yaml
+  let sorting = null
+  const configPath = path.join(lexadbPath, 'config.yaml')
+
+  if (fs.existsSync(configPath)) {
     try {
-      const content = fs.readFileSync(file, 'utf8');
-      const data = yaml.parse(content);
-      if (data && data.lexeme) {
-        lexemes.push({ lexeme: data.lexeme, content: data });
-      }
+      const config = yaml.parse(fs.readFileSync(configPath, 'utf8'))
+      sorting = config?.sorting ?? null
+      console.log(sorting)
     } catch (err) {
-      console.error(`Error parsing ${file}:`, err.message);
+      console.error('Error parsing config.yaml:', err.message)
     }
   }
 
-  return lexemes;
-});
+  for (const file of files) {
+    try {
+      const content = fs.readFileSync(file, 'utf8')
+      const data = yaml.parse(content)
+      if (data?.lexeme) {
+        lexemes.push({ lexeme: data.lexeme, content: data })
+      }
+    } catch (err) {
+      console.error(`Error parsing ${file}:`, err.message)
+    }
+  }
+
+  const comparator = sortEntries(sorting)
+  lexemes.sort((a, b) => comparator(a.lexeme, b.lexeme))
+
+  return lexemes
+})
