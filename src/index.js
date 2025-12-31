@@ -192,8 +192,11 @@ ipcMain.handle('read-lexicon', async (event, lexadbPath) => {
 
   for (const file of files) {
     try {
-      const data = yaml.parse(fs.readFileSync(file, 'utf8'));
-      if (data && data.lexeme) lexemes.push(data.lexeme);
+      const content = fs.readFileSync(file, 'utf8');
+      const data = yaml.parse(content);
+      if (data && data.lexeme) {
+        lexemes.push({ lexeme: data.lexeme, content: data });
+      }
     } catch (err) {
       console.error(`Error parsing ${file}:`, err.message);
     }

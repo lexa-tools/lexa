@@ -21,7 +21,9 @@ window.electronAPI.onLexadbOpened(async (lexadbPath) => {
 
   // Read lexicon immediately when DB is opened
   try {
-    lexiconData = await window.electronAPI.readLexicon(lexadbPath);
+    const files = await window.electronAPI.readLexicon(lexadbPath); // can modify readLexicon to return full YAML
+    // files = [{ lexeme, content }]
+    lexiconData = files;
     console.log('Lexicon preloaded:', lexiconData.length, 'entries');
   } catch (err) {
     console.error('Failed to preload lexicon:', err);
@@ -143,15 +145,24 @@ document.querySelectorAll('.sidebar__nav-item[data-view]')
 
       // If the lexicon view was loaded, render the preloaded data
       if (target === 'view-lexicon') {
-        const sheetLexicon = activeView.querySelector('.sheet-lexicon')
-        if (sheetLexicon) {
-          sheetLexicon.innerHTML = ''
-          lexiconData.forEach(lex => {
-            const div = document.createElement('div')
-            div.textContent = lex
-            sheetLexicon.appendChild(div)
-          })
-        }
+        const sheetLexicon = document.querySelector('.sheet-lexicon');
+        const sidePanel = document.querySelector('.side-panel');
+        if (!sheetLexicon || !sidePanel) return;
+
+        sheetLexicon.innerHTML = '';
+
+        lexiconData.forEach(item => {
+          const div = document.createElement('div');
+          div.textContent = item.lexeme;
+          div.classList.add('lexeme-entry'); // optional class for styling
+
+          div.addEventListener('click', () => {
+            // Display YAML content in side panel
+            sidePanel.innerHTML = `<pre>${JSON.stringify(item.content, null, 2)}</pre>`;
+          });
+
+          sheetLexicon.appendChild(div);
+        });
       }
     })
   })
