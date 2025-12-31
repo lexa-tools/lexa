@@ -91,3 +91,29 @@ window.electronAPI.onLexiconCounts((lexiconCounts) => {
   renderCounts('lexicon-class', lexiconCounts.word_class);
 });
 
+document.querySelectorAll('.sidebar__nav-item[data-view]')
+  .forEach(item => {
+    item.addEventListener('click', () => {
+      const target = item.dataset.view
+
+      // switch main views
+      document.querySelectorAll('.main__view')
+        .forEach(view => view.classList.remove('main__view--active'))
+
+      document.getElementById(target)
+        .classList.add('main__view--active')
+
+      // sync sidebar icons
+      document.querySelectorAll('.sidebar__nav-item i')
+        .forEach(icon => {
+          icon.classList.remove('sidebar__icon--active')
+          icon.classList.add('sidebar__icon')
+        })
+
+      const icon = item.querySelector('i')
+      icon.classList.remove('sidebar__icon')
+      icon.classList.add('sidebar__icon--active')
+    })
+  })
+
+

@@ -108,6 +108,15 @@ p {
   padding-left: 10px;
   padding-right: 10px;
 }
+.main__view {
+  display: none;
+  flex: 1 1 auto;
+  min-height: 0;
+}
+.main__view--active {
+  display: flex;
+  flex-direction: column;
+}
 
 /* Corner */
 .corner {
