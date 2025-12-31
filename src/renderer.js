@@ -13,10 +13,20 @@ window.electronAPI.onLexadbAuthor((lexadbAuthor) => {
   pathElement.textContent = `${lexadbAuthor}`;
 });
 
-// Send lexadb path
-window.electronAPI.onLexadbOpened((lexadbPath) => {
-  const pathElement = document.getElementById('lexadb-path');
-  pathElement.textContent = `${lexadbPath}`;
+let lexiconData = [];
+
+// Send lexadb path and read lexicon
+window.electronAPI.onLexadbOpened(async (lexadbPath) => {
+  document.getElementById('lexadb-path').textContent = lexadbPath;
+
+  // Read lexicon immediately when DB is opened
+  try {
+    lexiconData = await window.electronAPI.readLexicon(lexadbPath);
+    console.log('Lexicon preloaded:', lexiconData.length, 'entries');
+  } catch (err) {
+    console.error('Failed to preload lexicon:', err);
+    lexiconData = [];
+  }
 });
 
 // Send lexadb validation
@@ -114,23 +124,38 @@ document.querySelectorAll('.sidebar__nav-item[data-view]')
 
       await loadView(target, viewMap[target])
 
+      // Activate view
       document.querySelectorAll('.main__view')
         .forEach(v => v.classList.remove('main__view--active'))
 
-      document.getElementById(target)
-        .classList.add('main__view--active')
+      const activeView = document.getElementById(target)
+      activeView.classList.add('main__view--active')
 
+      // Update sidebar icons
       document.querySelectorAll('.sidebar__nav-item i')
         .forEach(i => {
           i.classList.remove('sidebar__icon--active')
           i.classList.add('sidebar__icon')
         })
-
       const icon = item.querySelector('i')
       icon.classList.add('sidebar__icon--active')
       icon.classList.remove('sidebar__icon')
+
+      // If the lexicon view was loaded, render the preloaded data
+      if (target === 'view-lexicon') {
+        const sheetLexicon = activeView.querySelector('.sheet-lexicon')
+        if (sheetLexicon) {
+          sheetLexicon.innerHTML = ''
+          lexiconData.forEach(lex => {
+            const div = document.createElement('div')
+            div.textContent = lex
+            sheetLexicon.appendChild(div)
+          })
+        }
+      }
     })
   })
+
 
 // Load overview view on open
 document.addEventListener('DOMContentLoaded', async () => {
@@ -141,3 +166,5 @@ document.addEventListener('DOMContentLoaded', async () => {
   document.getElementById(defaultView)
     .classList.add('main__view--active')
 })
+
+// Lexicon list

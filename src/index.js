@@ -1,10 +1,11 @@
 /* Copyright (C) 2025 Stefano
 Licensed under the GNU GPL v3. See LICENSE file for details. */
 
-const { app, BrowserWindow, Menu, dialog } = require('electron');
+const { app, BrowserWindow, Menu, dialog, ipcMain } = require('electron');
 const path = require('node:path');
 const fs = require('fs');
 const yaml = require('yaml');
+const glob = require('glob');
 const validation = require('./validation');
 const read = require('./read');
 const lexicon = require('./lexicon')
@@ -182,3 +183,21 @@ async function writeMerged() {
   const output = yaml.stringify(merged);
   await fs.promises.writeFile(filePath, output, 'utf8');
 }
+
+// Read lexicon
+
+ipcMain.handle('read-lexicon', async (event, lexadbPath) => {
+  const files = glob.sync(path.join(lexadbPath, 'lexicon', '*.yaml'));
+  const lexemes = [];
+
+  for (const file of files) {
+    try {
+      const data = yaml.parse(fs.readFileSync(file, 'utf8'));
+      if (data && data.lexeme) lexemes.push(data.lexeme);
+    } catch (err) {
+      console.error(`Error parsing ${file}:`, err.message);
+    }
+  }
+
+  return lexemes;
+});
