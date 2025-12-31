@@ -21,7 +21,7 @@ window.electronAPI.onLexadbOpened(async (lexadbPath) => {
 
   // Read lexicon immediately when DB is opened
   try {
-    const files = await window.electronAPI.readLexicon(lexadbPath); // can modify readLexicon to return full YAML
+    const files = await window.electronAPI.readLexicon(lexadbPath);
     // files = [{ lexeme, content }]
     lexiconData = files;
     console.log('Lexicon preloaded:', lexiconData.length, 'entries');
@@ -154,7 +154,7 @@ document.querySelectorAll('.sidebar__nav-item[data-view]')
         lexiconData.forEach(item => {
           const div = document.createElement('div');
           div.textContent = item.lexeme;
-          div.classList.add('lexeme-entry'); // optional class for styling
+          div.classList.add('lexicon-entry');
 
           div.addEventListener('click', () => {
             // Display YAML content in side panel

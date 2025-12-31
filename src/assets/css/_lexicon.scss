@@ -1,0 +1,15 @@
+// window.scss 
+
+@use 'variables';
+
+.lexicon-entry {
+  cursor: pointer;
+  margin-top: 2.5px;
+  margin-bottom: 2.5px;
+  padding-left: 5px;
+
+  &:hover {
+    background: variables.$bg-gray-3;
+    color: variables.$bg-gray-1;
+  }
+}
