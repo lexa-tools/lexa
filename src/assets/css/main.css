@@ -76,11 +76,18 @@ p {
   width: 60px;
   z-index: 100;
 }
+.sidebar__nav-item {
+  cursor: pointer;
+}
 .sidebar__nav-item:last-child {
   margin-top: auto;
 }
+.sidebar__nav-item:hover .sidebar__icon {
+  color: #5a5a5a;
+}
 .sidebar__icon {
   color: #aaaaaa;
+  transition: color 120ms ease-in-out;
 }
 .sidebar__icon--active {
   color: #5a5a5a;

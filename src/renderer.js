@@ -91,29 +91,53 @@ window.electronAPI.onLexiconCounts((lexiconCounts) => {
   renderCounts('lexicon-class', lexiconCounts.word_class);
 });
 
+async function loadView(viewId, file) {
+  const container = document.getElementById(viewId)
+
+  if (container.dataset.loaded) return
+
+  const res = await fetch(`views/${file}`)
+  container.innerHTML = await res.text()
+  container.dataset.loaded = "true"
+}
+
+const viewMap = {
+  "view-overview": "overview.html",
+  "view-lexicon": "lexicon.html"
+}
+
+// Sidebar logic
 document.querySelectorAll('.sidebar__nav-item[data-view]')
   .forEach(item => {
-    item.addEventListener('click', () => {
+    item.addEventListener('click', async () => {
       const target = item.dataset.view
 
-      // switch main views
+      await loadView(target, viewMap[target])
+
       document.querySelectorAll('.main__view')
-        .forEach(view => view.classList.remove('main__view--active'))
+        .forEach(v => v.classList.remove('main__view--active'))
 
       document.getElementById(target)
         .classList.add('main__view--active')
 
-      // sync sidebar icons
       document.querySelectorAll('.sidebar__nav-item i')
-        .forEach(icon => {
-          icon.classList.remove('sidebar__icon--active')
-          icon.classList.add('sidebar__icon')
+        .forEach(i => {
+          i.classList.remove('sidebar__icon--active')
+          i.classList.add('sidebar__icon')
         })
 
       const icon = item.querySelector('i')
-      icon.classList.remove('sidebar__icon')
       icon.classList.add('sidebar__icon--active')
+      icon.classList.remove('sidebar__icon')
     })
   })
 
+// Load overview view on open
+document.addEventListener('DOMContentLoaded', async () => {
+  const defaultView = 'view-overview'
 
+  await loadView(defaultView, viewMap[defaultView])
+
+  document.getElementById(defaultView)
+    .classList.add('main__view--active')
+})
