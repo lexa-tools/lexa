@@ -9,7 +9,7 @@ export async function loadView(viewId, file) {
   container.dataset.loaded = "true"
 }
 
-export function setupSidebar(viewMap, onViewActivated) {
+export function renderView(viewMap, onViewActivated) {
   document.querySelectorAll('.sidebar__nav-item[data-view]')
     .forEach(item => {
       item.addEventListener('click', async () => {

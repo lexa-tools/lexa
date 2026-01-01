@@ -2,7 +2,7 @@
 Licensed under the GNU GPL v3. See LICENSE file for details. */
 
 import { registerIpcHandlers } from './ipcHandlers.js'
-import { setupSidebar, loadOverview } from './views.js'
+import { renderView, loadOverview } from './views.js'
 import { renderLexicon } from './lexiconView.js'
 
 const lexiconData = []
@@ -14,7 +14,7 @@ const viewMap = {
 
 registerIpcHandlers(lexiconData)
 
-setupSidebar(viewMap, (activeView) => {
+renderView(viewMap, (activeView) => {
   if (activeView === 'view-lexicon') {
     const sheetLexicon = document.querySelector('.sheet-lexicon')
     const sidePanel = document.querySelector('.side-panel')
