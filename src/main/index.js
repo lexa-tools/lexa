@@ -6,7 +6,7 @@ const { createWindow } = require('./window');
 const { setupMenu } = require('./menu');
 
 // Import IPC handlers
-require('./actions/readLexicon');
+require('./lexicon/readLexicon');
 
 // Quit on squirrel events
 if (require('electron-squirrel-startup')) app.quit();

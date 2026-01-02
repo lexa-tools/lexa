@@ -2,8 +2,8 @@
 Licensed under the GNU GPL v3. See LICENSE file for details. */
 
 const { Menu } = require('electron');
-const { openLexadb } = require('./actions/openLexadb');
-const { writeMerged } = require('./actions/writeMerged');
+const { openLexadb } = require('./lexicon/openLexadb');
+const { writeMerged } = require('./lexicon/writeMerged');
 
 function setupMenu() {
   const template = [
