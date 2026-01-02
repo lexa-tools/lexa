@@ -3,7 +3,7 @@ Licensed under the GNU GPL v3. See LICENSE file for details. */
 
 const { dialog, Menu } = require('electron');
 const validation = require('../validation');
-const read = require('../utils/read');
+const read = require('../utils/readConfig');
 const lexicon = require('./lexiconStats');
 const { getMainWindow } = require('../window');
 
