@@ -7,7 +7,7 @@ const yaml = require('yaml');
 const glob = require('glob');
 const Ajv = require('ajv');
 const addFormats = require('ajv-formats');
-const read = require('../read');
+const read = require('../utils/read');
 
 const expectedStructure = [
   'lexicon',
