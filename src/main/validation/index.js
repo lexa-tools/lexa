@@ -7,7 +7,7 @@ const yaml = require('yaml');
 const glob = require('glob');
 const Ajv = require('ajv');
 const addFormats = require('ajv-formats');
-const read = require('./read');
+const read = require('../read');
 
 const expectedStructure = [
   'lexicon',
@@ -47,7 +47,7 @@ const ajv = new Ajv({ allErrors: true, strict: false, loadSchema: async (uri) =>
 
 addFormats(ajv);
 
-const lexiconSchemaPath = path.join(__dirname, 'assets', 'schemas', 'lx-schema.json');
+const lexiconSchemaPath = path.join(__dirname, '../assets', 'schemas', 'lx-schema.json');
 const lexiconSchema = JSON.parse(fs.readFileSync(lexiconSchemaPath, 'utf8'));
 
 async function validateLexicon(lexadbPath) {
