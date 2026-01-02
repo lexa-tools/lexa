@@ -6,7 +6,7 @@ const path = require('path');
 const glob = require('glob');
 const yaml = require('yaml');
 const { ipcMain } = require('electron');
-const { sortEntries } = require('../utils/sortEntries');
+const { sortEntries } = require('./sortEntries');
 
 ipcMain.handle('read-lexicon', async (event, lexadbPath) => {
   const files = glob.sync(path.join(lexadbPath, 'lexicon', '*.yaml'));

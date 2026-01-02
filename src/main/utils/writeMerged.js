@@ -5,7 +5,7 @@ const fs = require('fs');
 const path = require('path');
 const yaml = require('yaml');
 const { ensureFolder } = require('./ensureFolder');
-const { currentLexadbPath } = require('./openLexadb');
+const { currentLexadbPath } = require('../lexicon/openLexadb');
 
 async function writeMerged() {
   if (!currentLexadbPath) return;

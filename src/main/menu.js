@@ -3,7 +3,7 @@ Licensed under the GNU GPL v3. See LICENSE file for details. */
 
 const { Menu } = require('electron');
 const { openLexadb } = require('./lexicon/openLexadb');
-const { writeMerged } = require('./lexicon/writeMerged');
+const { writeMerged } = require('./utils/writeMerged');
 
 function setupMenu() {
   const template = [
