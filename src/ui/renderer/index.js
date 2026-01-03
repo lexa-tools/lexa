@@ -12,7 +12,16 @@ const viewMap = {
   "view-lexicon": "lexicon.html"
 }
 
-registerIpcHandlers(lexiconData)
+window.addEventListener('DOMContentLoaded', () => {
+  registerIpcHandlers(lexiconData);
+
+  const params = new URLSearchParams(window.location.search);
+  const dbPath = params.get('db');
+
+  if (dbPath) {
+    window.electronAPI.openLexadb(dbPath);
+  }
+});
 
 renderView(viewMap, (activeView) => {
   if (activeView === 'view-lexicon') {

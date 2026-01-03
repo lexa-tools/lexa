@@ -15,5 +15,6 @@ contextBridge.exposeInMainWorld('electronAPI', {
   onLexiconSummary: (callback) => ipcRenderer.on('lexicon-summary', (event, lexiconSummary) => callback(lexiconSummary)),
   onLexiconCounts: (callback) => ipcRenderer.on('lexicon-counts', (event, lexiconCounts) => callback(lexiconCounts)),
 
-  readLexicon: (lexadbPath) => ipcRenderer.invoke('read-lexicon', lexadbPath)
+  readLexicon: (lexadbPath) => ipcRenderer.invoke('read-lexicon', lexadbPath),
+  openLexadb: (dbPath) => ipcRenderer.invoke('open-lexadb', dbPath),
 });

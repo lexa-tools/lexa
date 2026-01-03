@@ -1,38 +1,27 @@
-/* Copyright (C) 2025 Stefano
-Licensed under the GNU GPL v3. See LICENSE file for details. */
-
-const { dialog, Menu } = require('electron');
 const validation = require('../validation');
 const read = require('../utils/readConfig');
 const lexicon = require('../lexicon/lexiconStats');
-const { getMainWindow } = require('../window');
+const { Menu } = require('electron');
 
-let currentLexadbPath = null;
-
-async function openLexadb() {
-  const mainWindow = getMainWindow();
-  const result = await dialog.showOpenDialog({ properties: ['openDirectory'] });
-  if (result.canceled || result.filePaths.length === 0) return;
-
-  const lexadbPath = result.filePaths[0];
-  currentLexadbPath = lexadbPath;
-
+// Canonical entry point for opening a LexaDB in a window.
+// Called both from menu actions and IPC (new instance auto-load).
+async function openLexadb(win, lexadbPath) {
   const validated = await validation.validateLexadb(lexadbPath);
   const validatedLexicon = await validation.validateLexicon(lexadbPath);
   const config = read.readConfig(lexadbPath);
   const lexiconSummary = await lexicon.lexiconSummarise(lexadbPath);
   const lexiconCounts = await lexicon.lexiconCount(lexadbPath);
 
-  mainWindow.webContents.send('lexadb-name', config.name);
-  mainWindow.webContents.send('lexadb-author', config.author);
-  mainWindow.webContents.send('lexadb-opened', lexadbPath);
-  mainWindow.webContents.send('lexadb-validation', validated);
-  mainWindow.webContents.send('lexicon-validation', validatedLexicon);
-  mainWindow.webContents.send('lexicon-summary', lexiconSummary);
-  mainWindow.webContents.send('lexicon-counts', lexiconCounts);
+  win.webContents.send('lexadb-name', config.name);
+  win.webContents.send('lexadb-author', config.author);
+  win.webContents.send('lexadb-opened', lexadbPath);
+  win.webContents.send('lexadb-validation', validated);
+  win.webContents.send('lexicon-validation', validatedLexicon);
+  win.webContents.send('lexicon-summary', lexiconSummary);
+  win.webContents.send('lexicon-counts', lexiconCounts);
 
-  const item = Menu.getApplicationMenu().getMenuItemById('write-merged');
+  const item = Menu.getApplicationMenu()?.getMenuItemById('write-merged');
   if (item) item.enabled = true;
 }
 
-module.exports = { openLexadb, currentLexadbPath };
+module.exports = { openLexadb };

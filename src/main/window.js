@@ -4,10 +4,8 @@ Licensed under the GNU GPL v3. See LICENSE file for details. */
 const { BrowserWindow } = require('electron');
 const path = require('path');
 
-let mainWindow;
-
-function createWindow() {
-  mainWindow = new BrowserWindow({
+function createWindow(dbPath = null) {
+  const win = new BrowserWindow({
     width: 1024,
     height: 768,
     backgroundColor: '#fafafa',
@@ -18,11 +16,12 @@ function createWindow() {
     },
   });
 
-  mainWindow.loadFile(path.join(__dirname, '../ui/index.html'));
+  // Pass the database path as a query parameter to the renderer
+  win.loadFile(path.join(__dirname, '../ui/index.html'), {
+    query: dbPath ? { db: dbPath } : undefined,
+  });
+
+  return win;
 }
 
-function getMainWindow() {
-  return mainWindow;
-}
-
-module.exports = { createWindow, getMainWindow };
+module.exports = { createWindow };
